@@ -1,0 +1,5 @@
+# Safety ops, because I don't want to fuck things up and leak my hentai
+# (not necessary NSFW bullshit, but SSH keys and unencrypted GPG key backups).
+# This isn't one-file file due to mandatory self docs, but see ~sircmpwn's post for
+# the deets: https://drewdevault.com/2019/12/30/dotfiles.html
+*
