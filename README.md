@@ -1,7 +1,7 @@
 # ~ajhalili2006's dotfiles
 
 This is the redesigned dotfiles repo for ~ajhalili2006, because my first repo became a mess so hard
-to fix it in, built from scratch and based on <https://git.sr.ht/~ajhalili2006/dotfiles-refreshed-staging>.
+to fix it in, built from scratch and based on <https://drewdevault.com/2019/12/30/dotfiles.html>.
 
 ## Available Git mirrors
 
