@@ -1,0 +1,8 @@
+#!/bin/sh
+project="$(basename $(pwd))"
+version="$(git describe)"
+
+git archive --format=tar.gz --prefix="$project-$version/" "$version" \
+	>"$project-$version.tar.gz"
+gpg --detach-sign "$@" --default-key 940047813E9D641C "$project-$version.tar.gz" \
+	>/tmp/"$project-$version".tar.gz.sig

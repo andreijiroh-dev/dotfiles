@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+
+# a script to generate backups for my GPG keys
+
+# literally all of active keys I use for different purposes
+# https://ajhalili2006.vern.cc/
+DEFAULT_PRIVATE_KEYS="A30EBE40AD856D88 67BFC91B3DA12BE8 940047813E9D641C 120C218ED2291996 7067DB4C7768552F 7E4E0EF8B968A952"
+DEFAULT_PUBLIC_KEYS="A30EBE40AD856D88 67BFC91B3DA12BE8 940047813E9D641C 120C218ED2291996"
+
+# allow anybody to automate this via envvars
+PRIVATE_KEYS="${PRIVATE_KEYS:-"$DEFAULT_PRIVATE_KEYS"}"
+PUBLIC_KEYS="${PUBLIC_KEYS:-"$DEFAULT_PUBLIC_KEYS"}"
+
+# Command snippet taken from OpenKeychain FAQs
+# https://www.openkeychain.org/faq/#what-is-the-best-way-to-transfer-my-own-key-to-openkeychain
+BACKUP_FILE_PASSWORD=$(gpg --armor --gen-random 1 20)
+TIMESTAMP=$(date +%s)
+
+generate_pubkey_bak() {
+  echo "[Stage 1]: Export all public keys per PUBLIC_KEYS to '$EXPORT_DIR/personal-$TIMESTAMP.asc'"
+  echo
+  sleep 3
+
+  if [[ $_arg_secretkeys_only == "true" ]]; then
+    echo "warning: Skipping because --only-secret flag is used"
+    return
+  fi
+
+  for key in $PUBLIC_KEYS; do
+    echo "Exporting keyid $key's public key"
+    if [[ $_arg_dryrun == "true" ]]; then
+      echo "+ gpg --armor --export \"$key\" >> \"$EXPORT_DIR/personal-$TIMESTAMP.asc\""
+    else
+      gpg --armor --export "$key" >> "$EXPORT_DIR/personal-$TIMESTAMP.asc"
+    fi
+    sleep 3
+  done
+}
+
+generate_privkey_bak() {
+  echo "[Stage 2]: Export all private keys per PRIVATE_KEYS to '$EXPORT_DIR/backup-personal-$TIMESTAMP.asc'"
+  echo
+  sleep 3
+
+  if [[ $_arg_pubkeys_only == "true" ]]; then
+    echo "warning: Skipping because --only-public flag is used"
+    return
+  fi
+
+  if [[ $_arg_dryrun == "true" ]]; then
+    for key in $PRIVATE_KEYS; do
+      echo "Exporting keyid $key with private key"
+      echo "+ gpg --armor --export-secret-keys $key >> $EXPORT_DIR/backup-personal-$TIMESTAMP.asc"
+      sleep 5
+    done
+    echo "+ gpg --batch --asymmetric --passphrase \"$BACKUP_FILE_PASSWORD\" --output \"$EXPORT_DIR/private-keys-backup-$TIMESTAMP.sec.asc\""
+    return
+  fi
+
+  for key in $PRIVATE_KEYS; do
+    echo "Exporting keyid $key with private key"
+    gpg --armor --export-secret-keys "$key" >> "$EXPORT_DIR/backup-personal-$TIMESTAMP.asc"
+    sleep 5
+  done
+  echo "warning: Use the following passphrase for encrypting the private key backup in case"
+  echo "warning: both --batch and --passphrase flags didn't work in 10 seconds below."
+  echo "warning:"
+  echo "warning: $BACKUP_FILE_PASSWORD"
+  echo "warning:"
+  sleep 10
+  gpg --batch --asymmetric --passphrase "$BACKUP_FILE_PASSWORD" --output "$EXPORT_DIR/private-keys-backup-$TIMESTAMP.sec.asc"
+}
+
+check_export_dir() {
+  echo "[Stage 0]: Check if the \$EXPORT_DIR exists and create if necessary"
+  echo
+  sleep 3
+  # dry-run
+  if [[ $_arg_dryrun == "true" ]]; then
+    echo "+ mkdir $EXPORT_DIR"
+    return
+  fi
+
+  if [[ ! -d "$EXPORT_DIR" ]]; then
+    echo "warning: Directory $EXPORT_DIR doesn't exist, attempting to create dir..."
+    if mkdir "$EXPORT_DIR"; then
+      true
+    else
+      error_code=$?
+      echo "error: Something gone horribly wrong while creating export directory."
+      echo "error: Check the logs, fix perms with chmod/chown/sudo and try again."
+      exit $error_code
+    fi
+  else
+    echo "info: export directory exists, contiuning..."
+  fi
+}
+
+usage() {
+  echo "USAGE: [EXPORT_DIR=\$(pwd)] $0 [--only-public | --only-secret | --dry-run]"
+}
+
+main() {
+  if [[ $DEBUG != "" ]]; then
+    set -x
+  fi
+
+  _arg_pubkeys_only=false
+  _arg_secretkeys_only=false
+  _arg_dryrun=false
+  EXPORT_DIR=${EXPORT_DIR:-"$HOME/.export-toolkit"}
+
+  # arg parser goes here
+  for _arg in "${@}"; do {
+    if test "$_arg" != "--" && [[ "$_arg" == -* ]]; then {
+      case "$_arg" in
+        --help | -h)
+           usage; exit 0
+           ;;
+        --public-keys-only | --pubkeys | --only-public | -p)
+           _arg_pubkeys_only=true
+           ;;
+        --private-keys-only | --secretkeys | --only-secret | -s)
+           _arg_secretkeys_only=true
+           ;;
+        --dryrun | --dry-run | -d)
+           _arg_dryrun=true
+           ;;
+      esac
+      shift;
+    } fi
+  } done
+
+  check_export_dir
+  generate_pubkey_bak
+  generate_privkey_bak
+}
+
+main "$@"

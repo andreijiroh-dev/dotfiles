@@ -1,0 +1,15 @@
+[Unit]
+Description=Make proxied services available under *-ajhalili2006.vern.cc via Caddy
+
+[Service]
+WorkingDirectory=/home/ajhalili2006/projects/andreijiroh.dev/tilde
+# in case of power loss and we still need to do this
+#ExecStartPre="/run/current-system/sw/bin/rm -f /home/ajhalili2006/.webserver.sock"
+ExecStart=/run/current-system/sw/bin/bash /home/ajhalili2006/projects/andreijiroh.dev/tilde/start-caddy-tildeserv.sh
+Restart=on-failure
+StartLimitBurst=3
+StartLimitInterval=90
+
+[Install]
+WantedBy=multi-user.target
+
