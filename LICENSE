@@ -1,0 +1,10 @@
+MIT License + Mozilla Public License 2.0
+
+Copyright (c) 2022-present Andrei Jiroh Halili and contributors
+
+The contents of this repository, including external contributions is licensed under both MIT
+and MPL-2.0, and this LICENSE file serves as placeholder for git hosting services that don't
+support miltiple license files. This license doesn't include code that copied over from
+third-parties and even Git submodules checked in.
+
+See LICENSE-MIT and LICENSE-MPL-2.0 for the legalese text in plaintext.
