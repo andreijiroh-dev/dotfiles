@@ -76,3 +76,4 @@
     skip-ci = push -o ci.skip
     root = rev-parse --show-toplevel
     signoff-commit = commit --signoff
+    signoff = signoff-commit

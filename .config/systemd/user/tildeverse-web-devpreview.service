@@ -1,0 +1,12 @@
+[Unit]
+Description=mkdocs serve over port 18034
+
+[Service]
+WorkingDirectory=/home/ajhalili2006/projects/andreijiroh.dev/tilde
+ExecStart=/home/ajhalili2006/.local/bin/mkdocs serve --watch-theme -a 127.0.0.1:18034
+StartLimitBurst=3
+StartLimitInterval=60
+
+[Install]
+WantedBy=default.target
+
