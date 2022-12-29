@@ -1,0 +1,78 @@
+[user]
+  name = Andrei Jiroh Halili
+  email = ajhalili2006@gmail.com
+  signingkey = 67BFC91B3DA12BE8
+
+[commit]
+  gpgSign = true
+[tag]
+  gpgSign = true
+
+[format]
+  signOff = true
+
+# https://groups.google.com/g/binary-transparency/c/f-BI4o8HZW0
+[transfer]
+  fsckobjects = true
+[fetch]
+  fsckobjects = true
+[receive]
+  fsckObjects = true
+
+# project-specifics
+[includeIf "gitdir/i:~/git-projects/sandbox"]
+  path = ~/.dotfiles/config/global/ajhalili2006-experiments.include.gitconfig
+[includeIf "gitdir/i:~/git-projects/recaptime.dev"]
+  path = ~/.dotfiles/config/global/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:~/projects/labs.andreijiroh.dev"]
+  path = ~/.dotfiles/config/global/ajhalili2006-experiments.include.gitconfig
+[includeIf "gitdir/i:~/projects/recaptime.dev"]
+  path = ~/.dotfiles/config/global/recaptime-dev.include.gitconfig
+
+# authentication hellscape
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gitlab.com"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+[credential "https://mau.dev"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+[credential "https://gitlab.alpinelinux.org"]
+	helper = 
+	helper = !/usr/bin/glab auth git-credential
+
+# sendemail stuff (https://go.recaptime.eu.org/sendgmail)
+[sendemail]
+    smtpServer = /home/ajhalili2006/go/bin/sendgmail
+    smtpServerOption = -sender=ajhalili2006@gmail.com
+
+# repo init chores
+[init]
+	defaultBranch = main
+
+# aliases
+[url "git@git.sr.ht:"]
+  insteadOf = https://git.sh.rt
+  pushInsteadOf = https://git.sh.rt
+[init]
+  defaultBranch = main
+# TODO: Set up aliases for ther Git hosts, like in Launchpad.net
+
+# aliases
+[alias]
+    #change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\>    signoff = "commit --signoff"
+    ammend = "commit --amend"
+    #stage = "add"
+    unstage = "restore --staged"
+    stats = "status"
+    sdiff = !git diff && git submodule foreach 'git diff'
+    spush = push --recurse-submodules=on-demand
+    supdate = submodule update --remote --merge
+    skip-ci = push -o ci.skip
+    root = rev-parse --show-toplevel
+    signoff-commit = commit --signoff
