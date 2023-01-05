@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+export HOST_SPECIFIC_BASHRC_PATH="$HOME/.config/$HOSTNAME.bashrc"
+
+# Stage 0: Source dotenv stuff from homedir
+source "$HOME/.env"
+if [[ -f "$HOME/.env.local" ]]; then
+  source "$HOME/.env.local"
+  export LOCAL_DOTENV_LOADED=true
+fi
+
+# Stage 1: Load global bashrc
+if [[ -f "$HOME/.bashrc" ]]; then
+  source "$HOME/.bashrc"
+fi
+
+# Stage 2: Machine specifcs
+if [[ -f $HOST_SPECIFIC_BASHRC ]]; then
+  source "$HOST_SPECIFIC_BASHRC_PATH"
+  export HOST_SPECIFIC_BASHRC_LOADED=true
+fi
