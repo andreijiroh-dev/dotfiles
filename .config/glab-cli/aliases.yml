@@ -1,2 +1,4 @@
 ci: pipeline ci
 co: mr checkout
+clone: repo clone
+pr: mr
