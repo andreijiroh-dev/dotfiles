@@ -1,0 +1,72 @@
+#!/bin/env sh
+
+# Aliases across shells. Note that this is only tested on Bash and Zsh, with a bit of testing
+# on ash.
+
+# basic git commands
+alias clone="git clone"
+alias stats="git status"
+## shortcuts to creating commits
+alias commit="git commit --signoff --gpg-sign"
+alias commit-nogpg="git commit --signoff --no-gpg-sign"
+alias new-checkpoint="commit"
+alias new-checkpoint-nogpg="commit-nogpg"
+## shortcuts to creating tags
+alias tag-checkpoint="git tag --gpg-sign"
+alias tag-checkpoint-nogpg="git tag --no-gpg-sign"
+alias new-tag="tag-checkpoint"
+alias new-tag-nogpg="tag-checkpoint-nogpg"
+## shortcuts to managing yiff stash
+alias stash="git stash push --keep-index"
+alias pop-stash="git stash pop"
+alias apply-stash="git stash apply"
+alias yeet-stash="git stash drop"
+## staging stuff
+alias stage="git add"
+alias unstage="git restore --staged"
+alias nuke-from-index="git rm"
+
+# branch management
+alias rename-branch="git branch -m"
+alias set-upstream-remote="git branch -u"
+
+# remote management
+alias change-origin="git remote set-url origin"
+alias change-upstream="git remote set-url upstream"
+alias add-remote="git remote add"
+alias change-remote-url="git remote set-url"
+alias nuke-remote="git remote remove"
+alias remove-remote="nuke-remote"
+
+# git push
+alias push="git push"
+## add main:master since Git assumes local branch to
+## remote branch when running this alias
+alias deploy-divio="git push divio"
+
+# fetch / pull
+alias fetch="git fetch --all"
+## depending on remote branch at upstream,
+## assumes its same branch.
+alias pull-upstream="fetch && git pull upstream"
+alias pull-origin="fetch && git pull origin"
+
+# history-cleanup like scripts
+alias clean-shellhis="history -c && clear"
+
+# test SSH connections
+alias test-gh-ssh="ssh -p 22 git@github.com"
+alias test-gl-ssh="ssh -p 22 git@gitlab.com"
+
+# ssh-agent stuff
+## quock shortcut into add-ssh-keys stuff
+#alias add-ssh-key="$HOME/.dotfiles/bin/add-ssh-keys"
+
+# shortcuts to some functions
+alias edit-script="edit-script-file"
+
+# add a bit of test here
+alias guild-test="echo successfully imported owo"
+
+# shortcuts for rdp stuff
+alias bshq-cursed='rdesktop --user cursed-remote-user -r audio:local -x lan -r clipboard:PRIMARYCLIPBOARD -n guildedguy bullshit.hq'
