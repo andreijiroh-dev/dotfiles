@@ -7,5 +7,9 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+export PATH="/usr/local/bin${PATH:+:}$PATH" # ~vern specifics, might work on this soon.
+mesg n 2> /dev/null || true
+
+# then import the rest
 source "$HOME/.env"
 source "$HOME/.config/aliases"
