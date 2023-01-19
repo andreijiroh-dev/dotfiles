@@ -6,7 +6,13 @@ export HOST_SPECIFIC_BASHRC_PATH="$HOME/.config/$HOSTNAME.bashrc"
 source "$HOME/.env"
 if [[ -f "$HOME/.env.local" ]]; then
   source "$HOME/.env.local"
-  export LOCAL_DOTENV_LOADED=true
+  LOCAL_DOTENV_LOADED=true
 fi
 
+# Stage 1: Source the ~/.profile
 source "$HOME/.profile"
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
+

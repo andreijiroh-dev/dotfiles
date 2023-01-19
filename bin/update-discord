@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+# An script to automate upgrading Discord via the deb download link.
+# TODO:Implement checks and flags to support for rpms and tar.gz setups
+
+wget "https://discord.com/api/download?platform=linux&format=deb" -O /tmp/discord-linux-amd64.deb
+sudo apt install /tmp/discord-linux-amd64.deb

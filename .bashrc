@@ -35,7 +35,6 @@ export GOPATH="$HOME/.local/share/go"
 export EDITOR=nano
 # For compartibility reasons and not to fuck things up on ~/go/bin.
 # Custom path might be also on ~/.env too?
-export PATH="$DOTFILES_BIN:$HOME/go/bin:$HOME/.local/bin:$GOPATH/bin:$PATH"
 # It would be nice if I would work on self-hosted reimplementation of
 # proxy.golang.org, but in meanwhile, you need to fuck off Google on this.
 # (Fucking Facebook and Microsoft off your lives are also hard too ICYMI.)

@@ -1,0 +1,92 @@
+#!/bin/env bash
+
+# SPDX-License-Identifier: MPL-2.0
+# An bloody script for opening text editors from the command line via $EDITOR and
+# command flags, work in progress and probably abandoned.
+
+# shellcheck disable=SC2034
+VSCODE_PATH=$(command -v code) # TODO: Add PATH detection for VS Code Desktop+Server/OpenVSCode Server/VSCodium/code-server
+NANO_PATH=$(command -v nano)
+VI_PATH=$(command -v vi) # maybe neovim?
+OPEN_EDITOR_LOCKFILE=$HOME/.dotfiles/config/open-editor
+
+if [[ $1 == "" ]]; then
+    echo "open-editor: Want to learn more how to use me? Use the '--help' flag to see the docs."
+    exit
+fi
+
+# Stack Overflow: https://stackoverflow.com/questions/7069682/how-to-get-arguments-with-flags-in-bash#21128172
+while test $# -gt 0; do
+  case "$1" in
+    -h|--help)
+      echo "$0 - shortcut to open editors within and from command line"
+      echo "By default, the script will attempt to guess what text editor to use as much"
+      echo "as possible. You can lock with the ~/.dotfiles/config/open-editor file."
+      echo
+      echo "$0 [options] filename"
+      echo " "
+      echo "options:"
+      echo "-h, --help                show brief help"
+      echo "-c, --use-code            use Visual Studio Code, with the 'wait' flag"
+      echo "-n, --use-nano            use GNU Nano"
+      echo "--lockfile                Generate a lockfile within your home directory"
+      echo "                          or edit if found."
+      exit 0
+      ;;
+    -c|--use-code)
+      shift
+      echo "open-editor: Firing up your editor, please wait..."
+      sleep 3
+      if test $# -gt 0; then
+        # shellcheck disable=SC2086
+        code --wait $1
+      else
+        echo "error: no file specified, aborting..."
+        exit 1
+      fi
+      shift
+      ;;
+    -n|--use-nano)
+      shift
+      echo "open-editor: Firing up your editor, please wait..."
+      sleep 3
+      if test $# -gt 0; then
+        # shellcheck disable=SC2086
+        nano $1
+        exit
+      fi
+      shift
+      ;;
+    --lockfile)
+      shift
+      if test $# -gt 0; then
+        export OUTPUT=$1
+      else
+        echo "no output dir specified"
+        exit 1
+      fi
+      shift
+      ;;
+    -*)
+      echo "open-editor: Unsupported flag, edit the script file to customize."
+      exit 1
+      ;;
+  esac
+done
+
+if [[ $VSCODE_PATH != "" ]]; then
+  echo "open-editor: Firing up your editor, please wait..."
+  sleep 3
+  code --wait "$1"
+  exit
+elif [[ $NANO_PATH != "" ]]; then
+  echo "open-editor: Firing up your editor, please wait..."
+  sleep 3
+  nano "$1"
+  exit
+else
+  echo "open-editor: Firing up your editor, please wait..."
+  sleep 3
+  vi "$1"
+  exit
+fi

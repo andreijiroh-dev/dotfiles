@@ -13,3 +13,9 @@ mesg n 2> /dev/null || true
 # then import the rest
 source "$HOME/.env"
 source "$HOME/.config/aliases"
+export POSIX_PROFILE_SOURCED=true
+
+
+# Added by Toolbox App
+export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
+
