@@ -15,6 +15,10 @@ source "$HOME/.env"
 source "$HOME/.config/aliases"
 export POSIX_PROFILE_SOURCED=true
 
+# how about detecting local configs
+if [ ! -f "$HOME/.config/localconfig.env" ]; then
+  . "$HOME/.config/localconfig.env"
+fi
 
 # Added by Toolbox App
 export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
