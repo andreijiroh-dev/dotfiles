@@ -10,12 +10,12 @@
 ##          This stage also initalizes oh-my-posh here.             ##
 if [[ $TERMUX ]]; then
   export SSH_AGENT_=todo
-else
+elif command -v keychain >> /dev/null; then
+  export KEYCHAIN_PATh=$(command -v keychain)
   eval $(keychain --agents gpg,ssh --eval)
 fi
 export GPG_TTY=$(tty)
-# Tip: I don't want to f**k things up on POSIX-based stuff, I might try
-# using 
+# TODO: Implement feature flag disabling this.
 if command -v oh-my-posh >>/dev/null; then
   eval "$(oh-my-posh init bash)"
 fi
