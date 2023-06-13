@@ -23,3 +23,4 @@ fi
 # Added by Toolbox App
 export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
 
+_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
