@@ -7,7 +7,7 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-export PATH="/usr/local/bin${PATH:+:}$PATH" # ~vern specifics, might work on this soon.
+export PATH="/usr/local/bin${PATH:+:}$PATH" # ~vern specifics and more
 mesg n 2> /dev/null || true
 
 # then import the rest
@@ -16,7 +16,7 @@ source "$HOME/.config/aliases"
 export POSIX_PROFILE_SOURCED=true
 
 # how about detecting local configs
-if [ ! -f "$HOME/.config/localconfig.env" ]; then
+if [ -f "$HOME/.config/localconfig.env" ]; then
   . "$HOME/.config/localconfig.env"
 fi
 
