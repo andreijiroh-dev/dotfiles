@@ -1,5 +1,5 @@
 [Desktop Entry]
-DefaultProfile=~ajhalili2006 - bash.profile
+DefaultProfile=
 
 [General]
 ConfigVersion=1
@@ -33,7 +33,6 @@ HDMI-1 eDP-1 XPosition 1366x768 HDMI-1=1366
 HDMI-1 eDP-1 YPosition 1366x768 HDMI-1=67
 MenuBar=Disabled
 RestorePositionForNextInstance=false
-State=AAAA/wAAAAD9AAAAAQAAAAAAAAAAAAAAAPwCAAAAAvsAAAAiAFEAdQBpAGMAawBDAG8AbQBtAGEAbgBkAHMARABvAGMAawAAAAAA/////wAAAXkBAAAD+wAAABwAUwBTAEgATQBhAG4AYQBnAGUAcgBEAG8AYwBrAAAAAAD/////AAABEQEAAAMAAAVWAAACjwAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABwAcwBlAHMAcwBpAG8AbgBUAG8AbwBsAGIAYQByAQAAAN//////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
 eDP-1=eDP-1
 eDP-1 HDMI-1=eDP-1
@@ -53,7 +52,11 @@ eDP-1 XPosition 1366x768=0
 eDP-1 XPosition 1366x768 eDP-1=0
 eDP-1 YPosition=24
 eDP-1 YPosition 1366x768=67
-eDP-1 YPosition 1366x768 eDP-1=67
+rdp0 Height 768=712
+rdp0 Width 1364=1364
+rdp0 Window-Maximized 1364x768=true
+rdp0 XPosition=0
+rdp0 YPosition=56
 
 [TabBar]
 NewTabButton=true
