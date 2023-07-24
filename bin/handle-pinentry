@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: MIT AND MPL-2.0
+# This is bit chaotic at best, per https://unix.stackexchange.com/a/116694.
+# Maybe we should aggressively detect more desktop environments, even non-DEs
+# as per https://askubuntu.com/a/227669.
+
+set -e
+if [[ $DEBUG != "" ]]; then
+  set -x
+fi
+
+GPG_TTY=$(tty)
+
+error() {
+  echo "error: $*"
+}
+
+warn() {
+  echo "warn: $*"
+}
+
+detect_env() {
+  if [ "$XDG_CURRENT_DESKTOP" = "" ]
+  then
+    desktop=$(echo "$XDG_DATA_DIRS" | sed 's/.*\(xfce\|kde\|gnome\).*/\1/')
+  else
+    desktop=$XDG_CURRENT_DESKTOP
+  fi
+  desktop=${desktop,,}  # convert to lower case
+}
+
+path_detection() {
+  if [[ $desktop == "kde" ]]; then
+    if command -v pinentry-qt >> /dev/null; then
+      target_bin=pinentry-qt
+    else
+      error "pinentry-qt isn't installed on your system or not found on PATH"
+      exit 1
+    fi
+  else
+     warn "environment can't be detected ($desktop), using pinentry-curses"
+     if command -v pinentry-curses >> /dev/null; then
+       target_bin=pinentry-curses
+     else
+       error "pinentry-curses isn't installed on your system or not found on PATH"
+       exit 1
+     fi
+  fi
+}
+
+detect_env
+path_detection
+export GPG_TTY
+exec $target_bin "$@"

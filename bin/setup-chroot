@@ -1,4 +1,7 @@
 #!/usr/bin/bash
+# SPDX-License-Identifier: MPL-2.0
+# A mini scirpt to handle chrooting into different environments,
+# especially for Alpine Linux devenv on chroots instead of containers/VMs.
 
 # Chroot command is optional and assume login binary
 CHROOT_COMMAND=${2:-"/usr/bin/login"}
@@ -33,4 +36,4 @@ fi
 
 echo "===> Teleporting to the chroot environment in 3 seconds..."
 sleep 3
-exec chroot "$TARGET_DIR" ${CHROOT_COMMAND}
+exec chroot "$TARGET_DIR" "${CHROOT_COMMAND}"

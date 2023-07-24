@@ -1,0 +1,17 @@
+{
+    "git.alwaysSignOff": true,
+    "gitlens.remotes": [
+        {
+            "domain": "mau.dev",
+            "type": "GitLab"
+        },
+        {
+            "domain": "tildegit.com",
+            "type": "Gitea"
+        },
+        {
+            "domain": "git.vern.cc",
+            "type": "Gitea"
+        }
+    ]
+}
