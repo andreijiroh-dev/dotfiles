@@ -1,0 +1,11 @@
+[user]
+  name = Andrei Jiroh Halili (RecapTime.dev)
+  email = ajhalili2006@crew.recaptime.eu.org
+  signingkey = 52B6B65187A7469A
+
+[url "ssh://git@git.jetbrains.space/recaptime/"]
+  pushInsteadOf = "https://git.jetbrains.space/recaptime/"
+  insteadOf = "https://git.jetbrains.space/recaptime/"
+[url "ssh://git@git.jetbrains.space/lorebooksdotwiki/"]
+  pushInsteadOf = "https://git.jetbrains.space/lorebooksdotwiki/"
+  insteadOf = "https://git.jetbrains.space/lorebooksdotwiki/"

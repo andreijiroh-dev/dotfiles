@@ -1,3 +1,4 @@
+# This is the default configuration for Git
 [user]
   name = Andrei Jiroh Halili
   email = ajhalili2006@andreijiroh.eu.org
@@ -7,6 +8,7 @@
   gpgSign = true
 [tag]
   gpgSign = true
+	forceSignAnnotated = true
 
 [format]
   signOff = true
@@ -19,15 +21,17 @@
 [receive]
   fsckObjects = true
 
-# project-specifics
-[includeIf "gitdir/i:~/git-projects/sandbox"]
-  path = ~/.dotfiles/config/global/ajhalili2006-experiments.include.gitconfig
+# project-specific configurations
+#[includeIf "gitdir/i:~/git-projects/sandbox"]
+#  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
+#[includeIf "gitdir/i:~/projects/labs.andreijiroh.dev"]
+#  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
 [includeIf "gitdir/i:~/git-projects/recaptime.dev"]
-  path = ~/.dotfiles/config/global/recaptime-dev.include.gitconfig
-[includeIf "gitdir/i:~/projects/labs.andreijiroh.dev"]
-  path = ~/.dotfiles/config/global/ajhalili2006-experiments.include.gitconfig
+  path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:~/projects/recaptime.dev"]
-  path = ~/.dotfiles/config/global/recaptime-dev.include.gitconfig
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+#[includeIf "gitdir/i:~projects/"]
+#  path = ~/.config/git/ajhalili2006.include.gitconfig
 
 # authentication hellscape
 [credential "https://github.com"]
@@ -73,7 +77,16 @@
     sdiff = !git diff && git submodule foreach 'git diff'
     spush = push --recurse-submodules=on-demand
     supdate = submodule update --remote --merge
-    skip-ci = push -o ci.skip
+    skip-ci = push -o ci.skip -o skip-ci
     root = rev-parse --show-toplevel
     signoff-commit = commit --signoff
     signoff = signoff-commit
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+#	editor = flatpak run re.sonny.Commit
+
+
