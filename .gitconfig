@@ -6,6 +6,7 @@
 
 [commit]
   gpgSign = true
+	template = /home/ajhalili2006/.config/git/commit-message-templates/default
 [tag]
   gpgSign = true
 	forceSignAnnotated = true
@@ -20,18 +21,6 @@
   fsckobjects = true
 [receive]
   fsckObjects = true
-
-# project-specific configurations
-#[includeIf "gitdir/i:~/git-projects/sandbox"]
-#  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
-#[includeIf "gitdir/i:~/projects/labs.andreijiroh.dev"]
-#  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
-[includeIf "gitdir/i:~/git-projects/recaptime.dev"]
-  path = ~/.config/git/recaptime-dev.include.gitconfig
-[includeIf "gitdir/i:~/projects/recaptime.dev"]
-  path = ~/.config/git/recaptime-dev.include.gitconfig
-#[includeIf "gitdir/i:~projects/"]
-#  path = ~/.config/git/ajhalili2006.include.gitconfig
 
 # authentication hellscape
 [credential "https://github.com"]
@@ -89,4 +78,14 @@
 [core]
 #	editor = flatpak run re.sonny.Commit
 
-
+# project-specific configurations
+#[includeIf "gitdir/i:~/git-projects/sandbox"]
+#  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
+#[includeIf "gitdir/i:~/projects/labs.andreijiroh.dev"]
+#  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
+[includeIf "gitdir/i:~/git-projects/recaptime.dev/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:~/projects/recaptime.dev/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+#[includeIf "gitdir/i:~projects/"]
+#  path = ~/.config/git/ajhalili2006.include.gitconfig

@@ -24,7 +24,9 @@ fi
 export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
 
 # Import asdf to shell
-export ASDF_DIR="$HOME/.asdf"
-. "$HOME/.asdf/asdf.sh"
+#export ASDF_DIR="$HOME/.asdf"
+#. "$HOME/.asdf/asdf.sh"
+
+eval "$(devbox global shellenv)"
 
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true

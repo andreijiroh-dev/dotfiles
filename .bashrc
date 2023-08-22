@@ -41,6 +41,8 @@ export EDITOR=nano
 # Context: https://git.sr.ht/~sircmpwn/dotfiles/tree/master/item/.profile#L13-15
 # and https://drewdevault.com/2021/08/06/goproxy-breaks-go.html
 export GOPROXY=direct GOSUMDB=off
+# nix profile install nixpkgs#glibcLocale
+export LOCALE_ARCHIVE="$HOME/.nix-profile/lib/locale/locale-archive"
 
 ## Stage 2: Source literally everything else                       ##
 if [[ -d "$HOME/.bashbox" ]]; then
@@ -62,4 +64,6 @@ export NVM_DIR="$HOME/.nvm"
 # make sure shell completions are loaded too
 . "$HOME/.asdf/asdf.sh"
 . "$HOME/.asdf/completions/asdf.bash"
-source <(gopass completion bash)
+
+eval "$(gopass completion bash)"
+eval "$(devbox global shellenv)"
