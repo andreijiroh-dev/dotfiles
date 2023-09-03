@@ -1,13 +1,16 @@
 # General
 alias clear="printf '\033c'" # faster than ncurses clear by a lot
 alias c='clear'
-alias bashrc="vim ~/.bashrc && source ~/.bashrc"
+alias bashrc="nano ~/.bashrc && source ~/.bashrc"
 # LS
 alias ls='ls --color=auto -FAh'
 alias ll='ls -l'
 alias la='ls'
 alias l.='ls | egrep "^\."'
 alias l=ls
+test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
 # GREP
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'

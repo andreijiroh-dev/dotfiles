@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 __sig() {
         # Giant switch case for getting the name of the signal (`kill -l`)
         a=0
