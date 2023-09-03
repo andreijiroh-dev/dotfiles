@@ -12,8 +12,9 @@ fi
 # Stage 1: Source the ~/.profile
 source "$HOME/.profile"
 
-
 # Added by Toolbox App
 export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
 
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
+
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer

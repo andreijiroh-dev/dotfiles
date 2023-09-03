@@ -38,7 +38,6 @@ path_detection() {
       exit 1
     fi
   else
-     warn "environment can't be detected ($desktop), using pinentry-curses"
      if command -v pinentry-curses >> /dev/null; then
        target_bin=pinentry-curses
      else

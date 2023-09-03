@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "mads-hartmann.bash-ide-vscode"
+        "mads-hartmann.bash-ide-vscode",
+        "jetpack-io.devbox"
     ]
 }

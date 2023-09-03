@@ -4,10 +4,11 @@
 # oh-my-zsh, although I still use zsh as my default shell. Sorry for a
 # lot of personal commentary and links hellscape here, it's there for
 # in-code docs and for future me to not dig through 'git log' hell.
-# SPDX-License-Identifier: TBD
+# SPDX-License-Identifier: MIT AND MPL-2.0
 
 ## Stage 0: Init keychain + GPG_TTY for pinentry hellscapes in TUI. ##
-##          This stage also initalizes oh-my-posh here.             ##
+##          This stage also initalizes oh-my-posh or custom
+##          PSI here.             ##
 if [[ $TERMUX ]]; then
   export SSH_AGENT_=todo
 elif command -v keychain >> /dev/null; then
@@ -15,14 +16,21 @@ elif command -v keychain >> /dev/null; then
   eval $(keychain --agents gpg,ssh --eval)
 fi
 export GPG_TTY=$(tty)
-# TODO: Implement feature flag disabling this.
-if command -v oh-my-posh >>/dev/null; then
+
+if command -v oh-my-posh >>/dev/null  && [[ $FF_USE_OHMYPOSH != "false" ]]; then
   eval "$(oh-my-posh init bash)"
+else
+  if [[ $PROMPT_THEME != "" ]] && [[ -f "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc" ]]; then
+    source "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc"
+  else
+    source "$HOME/.config/bash/shell-prompts/vern.bashrc"
+  fi
 fi
 
-## Stage 1: Init custom vars and shortcuts before anything else     ##
+## Stage 1: Init custom vars and shortcuts before anything else           ##
+##          Note that ~/.env and ~/.env.local should be loaded eariler on ##
 # Dotfiles stuff, maybe should be on ~/.env?
-export DOTFILES_HOME="$HOME/.dotfiles"
+#export DOTFILES_HOME="$HOME/.dotfiles"
 export DOTFILES_BIN="$DOTFILES_HOME/bin"
 # gopath should be on ~/.local/share/go to not fuck up with local install
 # at ~/go if exists
@@ -33,11 +41,6 @@ export GOPATH="$HOME/.local/share/go"
 # to my first editor after Notepad that started my web dev + Linux journey,
 # Atom (https://github.com/atom).
 export EDITOR=nano
-# For compartibility reasons and not to fuck things up on ~/go/bin.
-# Custom path might be also on ~/.env too?
-# It would be nice if I would work on self-hosted reimplementation of
-# proxy.golang.org, but in meanwhile, you need to fuck off Google on this.
-# (Fucking Facebook and Microsoft off your lives are also hard too ICYMI.)
 # Context: https://git.sr.ht/~sircmpwn/dotfiles/tree/master/item/.profile#L13-15
 # and https://drewdevault.com/2021/08/06/goproxy-breaks-go.html
 export GOPROXY=direct GOSUMDB=off
@@ -49,21 +52,15 @@ if [[ -d "$HOME/.bashbox" ]]; then
   source "$HOME/.bashbox/env"
 fi
 
-export HOMEBREW_HOME=${HOMEBREW_HOME:-"/home/linuxbrew/.linuxbrew"}
-test -d "$HOMEBREW_HOME" && eval "$($HOMEBREW_HOME/bin/brew shellenv)"
-[[ -r "$HOMEBREW_HOME/etc/profile.d/bash_completion.sh" ]] && . "$HOMEBREW_HOME/etc/profile.d/bash_completion.sh"
+# handle hostname generation for importing host-specific configs
+if [[ $WSL_DISTRO_NAME ]] && [[ $WSL_INTEROP ]]; then
+  HOSTNAME_BASH="${HOSTNAME}-wsl-${WSL_DISTRO_NAME}"
+  export WSL=1 # similar to CODESPACES and GITPOD_WORKSPACE_ID vars
+else
+  HOSTNAME_BASH="${HOSTNAME}"
+fi
 
-for file in "$HOME/.config/bash/${HOSTNAME}.bash" "$HOME/.config/bash/prompt" "${HOME}/.config/bash/bashrc"; do
+for file in "$HOME/.config/bash/hosts/${HOSTNAME_BASH}.bashrc" "${HOME}/.config/bash/bashrc"; do
     [ -f $file ] && . "$file"
 done
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# make sure shell completions are loaded too
-. "$HOME/.asdf/asdf.sh"
-. "$HOME/.asdf/completions/asdf.bash"
-
-eval "$(gopass completion bash)"
-eval "$(devbox global shellenv)"
