@@ -12,15 +12,16 @@ curl -fsSL https://scripts.andreijiroh.eu.org/dotfiles/setup.sh | bash -
 ## Available Git mirrors
 
 This project is hosted on [hosted instance of sourcehut](https://sr.ht) at the
-[`~ajhalili2006/dotfiles-modern`][git.sr.ht] Git repository, alongside the following
+[`~ajhalili2006/dotfiles`][git.sr.ht] Git repository, alongside the following
 Git mirrors:
 
-* mau.dev: <https://mau.dev/ajhalili2006/dotfiles-modern>
+* mau.dev: <https://mau.dev/andreijiroh.dev/dotfiles>
+* GitHub: <https://github.com/ajhalili2006/dotfiles>
 * Launchpad.net: <https://git.launchpad.net/ajhalili2006-dotfiles>
 * ~vern git: <https://git.vern.cc/ajhalili2006/dotfiles-modern>
 * tildegit: <https://tildegit.org/ajhalili2006/dotfiles-modern>
 
-[git.sr.ht]: https://git.sr.ht/~ajhalili2006/dotfiles-modern
+[git.sr.ht]: https://git.sr.ht/~ajhalili2006/dotfiles
 
 ## Setup
 
@@ -45,8 +46,7 @@ chown ajhalili2006:ajhalili2006 -Rv /home/ajhalili2006
 git fetch
 git checkout -f main
 
-# logout and login again to refresh your shell env or...
-source ~/bin/postinstall-shell-init
+# logout and login again to refresh your shell env
 ```
 
 ## Codespaces + Gitpod specifics

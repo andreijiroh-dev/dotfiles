@@ -52,8 +52,6 @@
 [url "git@git.sr.ht:"]
   insteadOf = https://git.sh.rt
   pushInsteadOf = https://git.sh.rt
-[init]
-  defaultBranch = main
 # TODO: Set up aliases for ther Git hosts, like in Launchpad.net
 
 # aliases
@@ -86,6 +84,12 @@
 [includeIf "gitdir/i:~/git-projects/recaptime.dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:~/projects/recaptime.dev/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:/workspaces/recaptime.dev"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:~/projects/recaptime-dev/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:/workspaces/recaptime-dev"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 #[includeIf "gitdir/i:~projects/"]
 #  path = ~/.config/git/ajhalili2006.include.gitconfig
