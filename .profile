@@ -7,7 +7,7 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-export PATH="/usr/local/bin${PATH:+:}$PATH" # ~vern specifics and more
+export PATH="/usr/local/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts:$HOME/.local/bin" # ~vern specifics and more
 mesg n 2> /dev/null || true
 
 # then import the rest
@@ -19,9 +19,6 @@ export POSIX_PROFILE_SOURCED=true
 if [ -f "$HOME/.config/localconfig.env" ]; then
   . "$HOME/.config/localconfig.env"
 fi
-
-# Added by Toolbox App
-export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
 
 # Import asdf to shell
 #export ASDF_DIR="$HOME/.asdf"
