@@ -68,6 +68,7 @@
     root = rev-parse --show-toplevel
     signoff-commit = commit --signoff
     signoff = signoff-commit
+    remotes = remote -v
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -85,11 +86,15 @@
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:~/projects/recaptime.dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
-[includeIf "gitdir/i:/workspaces/recaptime.dev"]
+[includeIf "gitdir/i:/workspaces/recaptime.dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:~/projects/recaptime-dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
-[includeIf "gitdir/i:/workspaces/recaptime-dev"]
+[includeIf "gitdir/i:/workspaces/recaptime-dev/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:/workspaces/lorebooks.wiki/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:/workspaces/lorebooks-wiki/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 #[includeIf "gitdir/i:~projects/"]
 #  path = ~/.config/git/ajhalili2006.include.gitconfig
