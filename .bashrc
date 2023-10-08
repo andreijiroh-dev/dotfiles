@@ -17,12 +17,17 @@ elif command -v keychain >> /dev/null; then
 fi
 export GPG_TTY=$(tty)
 
+# how about detecting local configs
+if [ -f "$HOME/.config/localconfig.env" ]; then
+  . "$HOME/.config/localconfig.env"
+fi
+
 if command -v oh-my-posh >>/dev/null  && [[ $FF_USE_OHMYPOSH != "false" ]]; then
   eval "$(oh-my-posh init bash)"
 else
   if [[ $PROMPT_THEME == "disabled" ]]; then
     true
-  elif [[ $PROMPT_THEME != "" ]] && [[ -f "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc" ]]; then
+  elif [[ -f "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc" ]]; then
     source "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc"
   else
     source "$HOME/.config/bash/shell-prompts/vern.bashrc"
