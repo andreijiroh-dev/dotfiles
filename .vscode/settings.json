@@ -13,5 +13,24 @@
             "domain": "git.vern.cc",
             "type": "Gitea"
         }
-    ]
+    ],
+    "gitlens.heatmap.ageThreshold": 60,
+    "gitlens.views.commitDetails.files.layout": "tree",
+    "gitlens.views.repositories.includeWorkingTree": true,
+    "gitlens.views.repositories.showIncomingActivity": true,
+    "gitlens.views.fileHistory.files.layout": "tree",
+    "gitlens.autolinks": [
+        {
+            "ignoreCase": true,
+            "prefix": "LAUNCHPAD-",
+            "url": "https://mau.dev/andreijiroh.dev/launchpad/-/issues/<num>"
+        },
+        {
+            "prefix": "IN-LAUNCHPAD-",
+            "url": "https://ajhalili2006.jetbrains.space/p/launchpad/issues/<num>"
+        }
+    ],
+    "gitlens.defaultTimeFormat": "HH:mm",
+    "gitlens.defaultDateShortFormat": "YYYY-MM-D",
+    "gitlens.defaultDateFormat": "YYYY-MM-D HH:mm"
 }

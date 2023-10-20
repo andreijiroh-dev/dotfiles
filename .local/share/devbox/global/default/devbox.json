@@ -2,7 +2,8 @@
   "packages": [
     "gita@latest",
     "shfmt@latest",
-    "hadolint@latest"
+    "hadolint@latest",
+    "python@3.12.0"
   ],
   "shell": {
     "init_hook": [
