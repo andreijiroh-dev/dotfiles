@@ -3,11 +3,11 @@
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+	    . "$HOME/.bashrc"
     fi
 fi
 
-export PATH="/usr/local/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts:$HOME/.local/bin" # ~vern specifics and more
+export PATH="/usr/local/bin:$HOME/.local/bin:$HOME/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts" # ~vern specifics and more
 mesg n 2> /dev/null || true
 
 # then import the rest
@@ -19,11 +19,5 @@ export POSIX_PROFILE_SOURCED=true
 if [ -f "$HOME/.config/localconfig.env" ]; then
   . "$HOME/.config/localconfig.env"
 fi
-
-# Import asdf to shell
-#export ASDF_DIR="$HOME/.asdf"
-#. "$HOME/.asdf/asdf.sh"
-
-eval "$(devbox global shellenv)"
 
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true

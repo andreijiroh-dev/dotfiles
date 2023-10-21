@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export HOST_SPECIFIC_BASHRC_PATH="$HOME/.config/$HOSTNAME.bashrc"
-
 # Stage 0: Source dotenv stuff from homedir
 source "$HOME/.env"
 if [[ -f "$HOME/.env.local" ]]; then
@@ -9,12 +7,16 @@ if [[ -f "$HOME/.env.local" ]]; then
   LOCAL_DOTENV_LOADED=true
 fi
 
-# Stage 1: Source the ~/.profile
-source "$HOME/.profile"
+if [[ $TERMUX ]]; then
+  export SSH_AGENT_=todo
+elif command -v keychain >> /dev/null; then
+  export KEYCHAIN_PATh=$(command -v keychain)
+  eval $(keychain --agents gpg,ssh --eval)
+fi
 
-# Added by Toolbox App
-export PATH="$PATH:/home/ajhalili2006/.local/share/JetBrains/Toolbox/scripts"
+# how about detecting local configs
+if [ -f "$HOME/.config/localconfig.env" ]; then
+  . "$HOME/.config/localconfig.env"
+fi
 
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
-
-if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi # added by Nix installer

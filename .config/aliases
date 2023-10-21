@@ -6,21 +6,25 @@
 # basic git commands
 alias clone="git clone"
 alias stats="git status"
+
 ## shortcuts to creating commits
 alias commit="git commit --signoff --gpg-sign"
 alias commit-nogpg="git commit --signoff --no-gpg-sign"
 alias new-checkpoint="commit"
 alias new-checkpoint-nogpg="commit-nogpg"
+
 ## shortcuts to creating tags
 alias tag-checkpoint="git tag --gpg-sign"
 alias tag-checkpoint-nogpg="git tag --no-gpg-sign"
 alias new-tag="tag-checkpoint"
 alias new-tag-nogpg="tag-checkpoint-nogpg"
+
 ## shortcuts to managing yiff stash
 alias stash="git stash push --keep-index"
 alias pop-stash="git stash pop"
 alias apply-stash="git stash apply"
 alias yeet-stash="git stash drop"
+
 ## staging stuff
 alias stage="git add"
 alias unstage="git restore --staged"
@@ -70,3 +74,7 @@ alias guild-test="echo successfully imported owo"
 
 # shortcuts for rdp stuff
 alias bshq-cursed='rdesktop --user cursed-remote-user -r audio:local -x lan -r clipboard:PRIMARYCLIPBOARD -n guildedguy bullshit.hq'
+
+# manage submodules
+alias module="git submodule"
+alias update-module="git submodule update --remote --merge"

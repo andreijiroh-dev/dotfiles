@@ -6,7 +6,7 @@
 
 [commit]
   gpgSign = true
-	template = /home/ajhalili2006/.config/git/commit-message-templates/default
+	template = ~/.config/git/commit-message-templates/default
 [tag]
   gpgSign = true
 	forceSignAnnotated = true
@@ -98,3 +98,8 @@
   path = ~/.config/git/recaptime-dev.include.gitconfig
 #[includeIf "gitdir/i:~projects/"]
 #  path = ~/.config/git/ajhalili2006.include.gitconfig
+[trailer "sign"]
+	key = "Signed-off-by: "
+	ifmissing = add
+	ifexists = doNothing
+	command = echo \"$(git config user.name) <$(git config user.email)>\"
