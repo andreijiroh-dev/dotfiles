@@ -26,6 +26,22 @@ to how mirroring work and usualy pushed there first)
 
 ## Setup
 
+### With yadm
+
+```shell
+# on a Alpine Linux sandbox VM (or chroot)
+apk add yadm git gnupg
+
+yadm clone https://mau.dev/andreijiroh.dev/dotfiles
+yadm restore --staged $HOME
+yadm checkout -- $HOME
+
+# run the bootstrap script
+yadm bootstrap
+```
+
+### Without yadm
+
 It's easy, although this will be different because `git clone <clone-url-above>` will
 scream some errors when attempt to do so after creating a user with their own home directory.
 
