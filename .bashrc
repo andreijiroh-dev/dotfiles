@@ -28,7 +28,7 @@ fi
 ##          Note that ~/.env and ~/.env.local should be loaded eariler on ##
 # Dotfiles stuff, maybe should be on ~/.env?
 #export DOTFILES_HOME="$HOME/.dotfiles"
-export DOTFILES_BIN="$DOTFILES_HOME/bin"
+export DOTFILES_BIN="$HOME/bin"
 # gopath should be on ~/.local/share/go to not fuck up with local install
 # at ~/go if exists
 export GOPATH="$HOME/.local/share/go"
@@ -44,6 +44,7 @@ export EDITOR=nano
 export GOPROXY=direct GOSUMDB=off
 # nix profile install nixpkgs#glibcLocale
 export LOCALE_ARCHIVE="$HOME/.nix-profile/lib/locale/locale-archive"
+export PATH="${DOTFILES_BIN}:${GOPATH}/bin:${HOME}/.local/bin:${PATH}"
 
 ## Stage 2: Source literally everything else                       ##
 if [[ -d "$HOME/.bashbox" ]]; then

@@ -20,56 +20,13 @@ if [ -f "$HOME/.config/localconfig.env" ]; then
   . "$HOME/.config/localconfig.env"
 fi
 
-# Load bash
-# shellcheck source=./.bashrc
-source ./.bashrc
+export DOTFILES_BIN="${HOME}/bin"
+# gopath should be on ~/.local/share/go to not fuck up with local insta>
+# at ~/go if exists
+export GOPATH="$HOME/.local/share/go"
+# Context: https://git.sr.ht/~sircmpwn/dotfiles/tree/master/item/.profi>
+# and https://drewdevault.com/2021/08/06/goproxy-breaks-go.html
+export GOPROXY=direct GOSUMDB=off
+export PATH="${DOTFILES_BIN}:${GOPATH}/bin:${HOME}/.local/bin:${PATH}"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-export PATH="/usr/local/bin:$HOME/.local/bin:$HOME/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts" # ~vern specifics and more
-mesg n 2> /dev/null || true
-
-# then import the rest
-source "$HOME/.env"
-source "$HOME/.config/aliases"
-export POSIX_PROFILE_SOURCED=true
-
-# how about detecting local configs
-if [ -f "$HOME/.config/localconfig.env" ]; then
-  . "$HOME/.config/localconfig.env"
-fi
-
-##########################################################################################
-# Code snippets from https://git.sr.ht/~sircmpwn/dotfiles/tree/db5945a4/item/.env
-##########################################################################################
-if ls --version 2>&1 | grep -i gnu >/dev/null
-then
-	alias ls='ls --color=auto '
-elif ls --version 2>&1 | grep -i busybox >/dev/null
-then
-	alias ls='ls --color=auto '
-fi
-
-alias recent='ls -ltch'
-
-# Add optmizations for multicore builds
-if [ $(uname) = "Linux" ]
-then
-	nproc=$(grep '^processor' /proc/cpuinfo | wc -l)
-	if [ $nproc -gt 4 ]
-	then
-		# Reserve two cores
-		nproc=$((nproc - 2))
-	fi
-	export MAKEFLAGS="-j$nproc"
-	export SAMUFLAGS="-j$nproc"
-fi
-##########################################################################################
+_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true

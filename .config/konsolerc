@@ -1,0 +1,94 @@
+[Desktop Entry]
+DefaultProfile=Byobu.profile
+
+[General]
+ConfigVersion=1
+
+[KFileDialog Settings]
+Recent Files[$e]=personal,file:$HOME/.ssh/personal
+Recent URLs[$e]=file:$HOME/.ssh/
+detailViewIconSize=16
+
+[KonsoleWindow]
+RememberWindowSize=false
+ShowWindowTitleOnTitleBar=true
+
+[MainWindow]
+1209x683 screen: Height=624
+1209x683 screen: Width=1209
+1209x683 screen: Window-Maximized=true
+1209x683 screen: XPosition=0
+1209x683 screen: YPosition=59
+1214x683 screen: Height=584
+1214x683 screen: Width=911
+1214x683 screen: XPosition=151
+1214x683 screen: YPosition=78
+1280x1024 screen: Window-Maximized=true
+1280x720 screen: Window-Maximized=true
+1280x960 screen: Window-Maximized=true
+1360x768 screen: Height=696
+1360x768 screen: Width=1360
+1360x768 screen: Window-Maximized=true
+1360x768 screen: XPosition=0
+1360x768 screen: YPosition=72
+1366x768 screen: Height=704
+1366x768 screen: Width=1366
+1366x768 screen: Window-Maximized=true
+1366x768 screen: XPosition=0
+1366x768 screen: YPosition=64
+1920x1080 screen: Height=692
+1920x1080 screen: Width=1280
+1920x1080 screen: Window-Maximized=true
+1920x1080 screen: XPosition=320
+1920x1080 screen: YPosition=208
+2 screens: Height=624
+2 screens: Width=607
+2 screens: XPosition=0
+2 screens: YPosition=59
+HDMI-1=HDMI-1
+HDMI-1 Height 1366x768 HDMI-1=701
+HDMI-1 Width 1366x768 HDMI-1=1366
+HDMI-1 Window-Maximized 1366x768 HDMI-1=true
+HDMI-1 XPosition 1366x768 HDMI-1=0
+HDMI-1 YPosition 1366x768 HDMI-1=67
+HDMI-1 eDP-1=eDP-1
+HDMI-1 eDP-1 Height 1366x768 HDMI-1=701
+HDMI-1 eDP-1 Width 1366x768 HDMI-1=1366
+HDMI-1 eDP-1 Window-Maximized 1366x768 HDMI-1=true
+HDMI-1 eDP-1 Window-Maximized 1366x768 eDP-1=true
+HDMI-1 eDP-1 XPosition 1366x768 HDMI-1=1366
+HDMI-1 eDP-1 YPosition 1366x768 HDMI-1=67
+MenuBar=Enabled
+RestorePositionForNextInstance=false
+State=AAAA/wAAAAD9AAAAAQAAAAAAAAD1AAACjfwCAAAAAvsAAAAiAFEAdQBpAGMAawBDAG8AbQBtAGEAbgBkAHMARABvAGMAawAAAAAA/////wAAAXwBAAAD+wAAABwAUwBTAEgATQBhAG4AYQBnAGUAcgBEAG8AYwBrAAAAAC4AAAKNAAABFQEAAAMAAAOPAAAB/AAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABwAcwBlAHMAcwBpAG8AbgBUAG8AbwBsAGIAYQByAQAAAOj/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+eDP-1=eDP-1
+eDP-1 HDMI-1=eDP-1
+eDP-1 HDMI-1 Window-Maximized 1366x768 eDP-1=true
+eDP-1 HDMI-1 XPosition 1366x768 eDP-1=567
+eDP-1 HDMI-1 YPosition 1366x768 eDP-1=367
+eDP-1 Height 1366x768=701
+eDP-1 Height 1366x768 eDP-1=701
+eDP-1 Height 768=698
+eDP-1 Width 1366=1366
+eDP-1 Width 1366x768=1366
+eDP-1 Width 1366x768 eDP-1=1366
+eDP-1 Window-Maximized 1366x768=true
+eDP-1 Window-Maximized 1366x768 eDP-1=true
+eDP-1 XPosition=0
+eDP-1 XPosition 1366x768=0
+eDP-1 XPosition 1366x768 eDP-1=0
+eDP-1 YPosition=24
+eDP-1 YPosition 1366x768=67
+rdp0 Height 768=712
+rdp0 Width 1364=1364
+rdp0 Window-Maximized 1364x768=true
+rdp0 XPosition=0
+rdp0 YPosition=56
+
+[TabBar]
+NewTabButton=true
+TabBarVisibility=AlwaysShowTabBar
+
+[UiSettings]
+ColorScheme=Default

@@ -17,19 +17,7 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-# Add $GOPATH/bin into PATH
-export GOPATH="$HOME/.local/share/go"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="/usr/local/bin::$HOME/bin:$HOME/.local/bin:$HOME/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts" # ~vern specifics and more
 mesg n 2> /dev/null || true
 
 # then import the rest
