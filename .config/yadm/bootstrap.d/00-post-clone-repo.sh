@@ -11,5 +11,5 @@ elif [ -d "$HOME/.git" ] && [ ! -d "$HOME/.local/share/yadm/repo.git" ]; then
 fi
 
 echo "Setting git remote URLs to SSH"
-git remote set-url origin ssh://git@mau.dev/andreijiroh.dev/dotfiles || true
-git remote set-url hut ssh://git@git.sr.ht/~ajhalili2006/dotfiles || true
+git remote set-url --add origin ssh://git@mau.dev/andreijiroh.dev/dotfiles || true
+git remote set-url --add hut ssh://git@git.sr.ht/~ajhalili2006/dotfiles || git remote add hut ssh://git@git.sr.ht/~ajhalili2006/dotfiles

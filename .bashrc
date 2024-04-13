@@ -12,9 +12,11 @@
 if [[ $TERMUX ]]; then
   export SSH_AGENT_=todo
 elif command -v keychain >> /dev/null; then
-  export KEYCHAIN_PATh=$(command -v keychain)
+  # shellcheck disable=SC2155
+  export KEYCHAIN_PATH=$(command -v keychain)
   eval $(keychain --agents gpg,ssh --eval)
 fi
+# shellcheck disable=SC2155
 export GPG_TTY=$(tty)
 
 # how about detecting local configs
@@ -28,6 +30,7 @@ else
   if [[ $PROMPT_THEME == "disabled" ]]; then
     true
   elif [[ -f "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc" ]]; then
+    # shellcheck disable=SC1090
     source "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc"
   else
     source "$HOME/.config/bash/shell-prompts/vern.bashrc"
@@ -56,19 +59,21 @@ export LOCALE_ARCHIVE="$HOME/.nix-profile/lib/locale/locale-archive"
 
 ## Stage 2: Source literally everything else                       ##
 if [[ -d "$HOME/.bashbox" ]]; then
+  # shellcheck disable=SC1091
   source "$HOME/.bashbox/env"
 fi
 
 # handle hostname generation for importing host-specific configs
 # TODO: Handle detection when we don't have WSL_* variables on tmux shell sessions
 if [[ $WSL_DISTRO_NAME ]] && [[ $WSL_INTEROP ]]; then
-  HOSTNAME_BASH="${HOSTNAME}-wsl-${WSL_DISTRO_NAME}"
+  HOSTNAME_BASH="$(cat /etc/hostname)-wsl-${WSL_DISTRO_NAME}"
   export WSL=1 # similar to CODESPACES and GITPOD_WORKSPACE_ID vars
 else
-  HOSTNAME_BASH="${HOSTNAME}"
+  HOSTNAME_BASH="$(cat /etc/hostname)"
 fi
+export HOSTNAME_BASH
 
 for file in "$HOME/.config/bash/hosts/${HOSTNAME_BASH}.bashrc" "${HOME}/.config/bash/bashrc"; do
-    [ -f $file ] && . "$file"
+    # shellcheck disable=SC1090
+    [ -f "$file" ] && . "$file"
 done
-
