@@ -1,9 +1,9 @@
 [user]
   name = Andrei Jiroh Halili (RecapTime.dev)
-  email = ajhalili2006@crew.recaptime.eu.org
+  email = ajhalili2006@crew.recaptime.dev
   signingkey = 52B6B65187A7469A
 [commit]
-  template = /home/ajhalili2006/.config/git/commit-message-templates/recaptime-dev
+  template = ~/.config/git/commit-message-templates/recaptime-dev
 [url "ssh://git@git.jetbrains.space/recaptime/"]
   pushInsteadOf = "https://git.jetbrains.space/recaptime/"
   insteadOf = "https://git.jetbrains.space/recaptime/"

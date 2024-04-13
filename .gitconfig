@@ -1,7 +1,7 @@
 # This is the default configuration for Git
 [user]
   name = Andrei Jiroh Halili
-  email = ajhalili2006@andreijiroh.eu.org
+  email = ajhalili2006@andreijiroh.xyz
   signingkey = 67BFC91B3DA12BE8
 
 [commit]
@@ -91,6 +91,8 @@
 [includeIf "gitdir/i:~/projects/recaptime-dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:/workspaces/recaptime-dev/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:/var/git/recaptime-dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:/workspaces/lorebooks.wiki/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
