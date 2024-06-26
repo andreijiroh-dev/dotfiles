@@ -1,0 +1,77 @@
+# User-wide nanorc based on my system-wide configs for stellapent-cier.tailnet
+# to make things portable as needed.
+
+# Display line numbers to the left (and any anchors in the margin).
+set linenumbers
+
+# Enable vim-style lock-files.  This is just to let a vim user know you
+# are editing a file [s]he is trying to edit and vice versa.  There are
+# no plans to implement vim-style undo state in these files.
+set locking
+
+# Display a "scrollbar" on the righthand side of the edit window.
+set indicator
+
+# This was set to 80 to match VS Code settings.
+set guidestripe 80
+
+## Enable mouse support, if available for your system.  When enabled,
+## mouse clicks can be used to place the cursor, set the mark (with a
+## double click), and execute shortcuts.  The mouse will work in the
+## X Window System, and on the console when gpm is running.
+set mouse
+
+# Switch on multiple file buffers (inserting a file will put it into a
+# separate buffer).
+set multibuffer
+
+## Don't convert files from DOS/Mac format.
+set noconvert
+
+# Spread overlong lines over multiple screen lines.
+set softwrap
+
+## Use this tab size instead of the default; it must be greater than 0.
+set tabsize 4
+
+## Convert each typed tab to the fitting number of spaces.
+set tabstospaces
+
+## Snip whitespace at the end of lines when justifying or hard-wrapping.
+# set trimblanks
+
+# import included syntax highlighting for nano
+include "/usr/share/nano/*.nanorc"
+
+# Make regularly-used features have more usual shortcuts
+bind ^X cut main
+bind ^C copy main
+bind ^V paste all
+bind ^Q exit all
+bind ^S savefile main
+#bind ^W writeout main
+#bind ^O insert main
+#set multibuffer
+#bind ^H help all
+#bind ^H exit help
+#bind ^F whereis all
+#bind ^G findnext all
+#bind ^B wherewas all
+#bind ^D findprevious all
+#bind ^R replace main
+#unbind ^U all
+#unbind ^N main
+#unbind ^Y all
+#unbind M-J main
+#unbind M-T main
+bind ^A mark main
+#bind ^P location main
+bind ^T gotoline main
+#bind ^T gotodir browser
+#bind ^T cutrestoffile execute
+#bind ^L linter execute
+#bind ^E execute main
+#bind ^K "{mark}{end}{zap}" main
+#bind ^U "{mark}{home}{zap}" main
+bind ^Z undo main
+bind ^Y redo main
