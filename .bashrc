@@ -63,8 +63,9 @@ if [[ -d "$HOME/.bashbox" ]]; then
   source "$HOME/.bashbox/env"
 fi
 
-# handle hostname generation for importing host-specific configs
-# TODO: Handle detection when we don't have WSL_* variables on tmux shell sessions
+# Formerly: handle hostname generation for importing host-specific configs
+# TODO: Handle detection across distributions without chaos, especially where
+# Nix is installed (not NixOS)
 if [[ $WSL_DISTRO_NAME ]] && [[ $WSL_INTEROP ]]; then
   HOSTNAME_BASH="$(cat /etc/hostname)-wsl-${WSL_DISTRO_NAME}"
   export WSL=1 # similar to CODESPACES and GITPOD_WORKSPACE_ID vars

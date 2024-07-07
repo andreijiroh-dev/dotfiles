@@ -41,5 +41,4 @@ if [ -f "$HOME/.config/localconfig.env" ]; then
 fi
 
 if [[ $FF_BYOBU_ON_LOGIN != "" ]]; then
-  _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 fi

@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
+# # shellcheck disable=SC2046,SC1091,SC2155
 
 # Stage 0: Source dotenv stuff from homedir
 source "$HOME/.env"
 if [[ -f "$HOME/.env.local" ]]; then
   source "$HOME/.env.local"
-  LOCAL_DOTENV_LOADED=true
+  export LOCAL_DOTENV_LOADED=true
 fi
 
 if [[ $TERMUX ]]; then
   export SSH_AGENT_=todo
 elif command -v keychain >> /dev/null; then
-  export KEYCHAIN_PATh=$(command -v keychain)
+  export KEYCHAIN_PATH=$(command -v keychain)
   eval $(keychain --agents gpg,ssh --eval)
 fi
 
@@ -19,4 +20,5 @@ if [ -f "$HOME/.config/localconfig.env" ]; then
   . "$HOME/.config/localconfig.env"
 fi
 
-_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
+# # shellcheck source=./.bashrc
+source ./.bashrc

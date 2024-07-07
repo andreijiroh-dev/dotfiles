@@ -1,7 +1,7 @@
 # General
 alias clear="printf '\033c'" # faster than ncurses clear by a lot
 alias c='clear'
-alias bashrc="nano ~/.bashrc && source ~/.bashrc"
+alias bashrc="${EDITOR:-"nano"} ~/.bashrc && source ~/.bashrc"
 # LS
 alias ls='ls --color=auto -FAh'
 alias ll='ls -l'
