@@ -6,7 +6,8 @@ to fix it in, built from scratch and based on <https://drewdevault.com/2019/12/3
 ## Quick deploy
 
 ```bash
-curl -fsSL https://scripts.andreijiroh.eu.org/dotfiles/setup.sh | bash -
+# Working on it soon.
+curl -fsSL https://scripts.andreijiroh.xyz/dotfiles/setup.sh | bash -
 ```
 
 ## Available Git mirrors

@@ -1,0 +1,14 @@
+[
+  {
+    "bindings": {
+      "ctrl-alt-q": "zed::Quit" // Ctrl-Q is reserved for Nano
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-shift-s": "workspace::Save",
+      "ctrl-alt-s": "workspace::SaveAs"
+    }
+  }
+]
