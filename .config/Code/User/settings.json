@@ -1,0 +1,46 @@
+{
+    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "keyword.other.dotenv",
+                "settings": {
+                    "foreground": "#FF000000"
+                }
+            }
+        ]
+    },
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.productIconTheme": "material-product-icons",
+    "application.shellEnvironmentResolutionTimeout": 30,
+    "arcade-vsc.slackID": "U07CAPBB9B5",
+    "explorer.confirmDragAndDrop": false,
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "window.customTitleBarVisibility": "auto",
+    "window.confirmBeforeClose": "never",
+    "window.titleBarStyle": "custom",
+    "gpgIndicator.enablePassphraseCache": true,
+    "cSpell.userWords": [
+        "Infinix",
+        "Yubikey"
+    ],
+    "workbench.experimental.enableNewProfilesUI": true,
+    "editor.codeActionsOnSave": {},
+    "sqltools.useNodeRuntime": true,
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.cache/**": true
+    },
+    "git.alwaysSignOff": true,
+    "git.checkoutType": [
+        "local",
+        "remote",
+        "tags"
+    ]
+}

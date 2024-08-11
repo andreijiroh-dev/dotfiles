@@ -1,0 +1,17 @@
+{
+	"workbench.colorTheme": "Default Light Modern",
+	"editor.minimap.enabled": false,
+	"breadcrumbs.enabled": false,
+	"editor.glyphMargin": false,
+	"explorer.decorations.badges": false,
+	"explorer.decorations.colors": false,
+	"editor.fontLigatures": true,
+	"files.autoSave": "afterDelay",
+	"git.enableSmartCommit": true,
+	"window.commandCenter": true,
+	"editor.renderWhitespace": "none",
+	"workbench.editor.untitled.hint": "hidden",
+	"markdown.validate.enabled": true,
+	"markdown.updateLinksOnFileMove.enabled": "prompt",
+	"workbench.startupEditor": "none"
+}

@@ -16,7 +16,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "Github Dark"
+    "dark": "Material Dark"
   },
   "git": {
     "git_gutter": "tracked_files",

@@ -32,5 +32,11 @@
     "shellcheck.customArgs": [
         "--external-sources",
         "-x"
-    ]
+    ],
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/*/**": true,
+        "**/.cache/**": true
+    }
 }
