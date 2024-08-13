@@ -42,5 +42,27 @@
         "local",
         "remote",
         "tags"
-    ]
+    ],
+    "gitlens.autolinks": [
+        {
+            "ignoreCase": true,
+            "prefix": "LAUNCHPAD-",
+            "url": "https://youtrack.andreijiroh.xyz/issue/LAUNCHPAD-<num>"
+        },
+        {
+            "ignoreCase": true,
+            "prefix": "LAUNCHPAD-T",
+            "url": "https://youtrack.andreijiroh.xyz/issue/LAUNCHPAD-<num>"
+        },
+        {
+            "ignoreCase": true,
+            "prefix": "META-",
+            "url": "https://youtrack.recaptime.dev/issue/META-<num>"
+        },
+        {
+            "ignoreCase": true,
+            "prefix": "META-T-",
+            "url": "https://youtrack.recaptime.dev/issue/META-<num>"
+        }
+    ],
 }

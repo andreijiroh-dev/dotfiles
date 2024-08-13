@@ -38,5 +38,6 @@
         "**/.git/subtree-cache/**": true,
         "**/node_modules/*/**": true,
         "**/.cache/**": true
-    }
+    },
+    "dotenv.enableAutocloaking": false
 }

@@ -40,9 +40,9 @@
 	helper = !/usr/bin/glab auth git-credential
 
 # sendemail stuff (https://go.recaptime.eu.org/sendgmail)
-[sendemail]
-    smtpServer = /home/ajhalili2006/go/bin/sendgmail
-    smtpServerOption = -sender=ajhalili2006@gmail.com
+#[sendemail]
+#    smtpServer = /home/ajhalili2006/go/bin/sendgmail
+#    smtpServerOption = -sender=ajhalili2006@gmail.com
 
 # repo init chores
 [init]
@@ -105,3 +105,5 @@
 	ifmissing = add
 	ifexists = doNothing
 	command = echo \"$(git config user.name) <$(git config user.email)>\"
+[push]
+	autoSetupRemote = true
