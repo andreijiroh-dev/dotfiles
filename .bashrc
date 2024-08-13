@@ -9,11 +9,12 @@
 ## Stage 0: Init keychain + GPG_TTY for pinentry hellscapes in TUI. ##
 ##          This stage also initalizes oh-my-posh or custom
 ##          PSI here.             ##
-if [[ $TERMUX ]]; then
-  export SSH_AGENT_=todo
-elif command -v keychain >> /dev/null; then
+export KEYCHAIN_PATH=$(command -v keychain)
+
+if [[ $TERMUX_APP__PACKAGE_NAME ]]; then
+  eval $(keychain --agents ssh --eval)
+else
   # shellcheck disable=SC2155
-  export KEYCHAIN_PATH=$(command -v keychain)
   eval $(keychain --agents gpg,ssh --eval)
 fi
 # shellcheck disable=SC2155

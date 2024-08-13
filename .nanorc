@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT AND MPL-2.0 (excluding third party code)
 
 # Display line numbers to the left (and any anchors in the margin).
-set linenumbers
+#set linenumbers
 
 # Enable vim-style lock-files.  This is just to let a vim user know you
 # are editing a file [s]he is trying to edit and vice versa.  There are
@@ -44,7 +44,10 @@ set trimblanks
 
 # import included syntax highlighting for nano
 # TODO: Load them via ~/.local/share/nano for portability
-include "/usr/share/nano/*.nanorc"
+#include "/usr/share/nano/*.nanorc"
+# actually commented out since it is included by default on
+# the bootstrap process
+#include "/usr/share/nano/*.nanorc"
 
 # Make regularly-used features have more usual shortcuts
 bind M-Z suspend main

@@ -27,7 +27,7 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="/usr/local/bin:$HOME/.local/bin:$HOME/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts" # ~vern specifics and more
+#export PATH="/usr/local/bin:$HOME/.local/bin:$HOME/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts" # ~vern specifics and more
 mesg n 2> /dev/null || true
 
 # then import the rest
@@ -66,3 +66,7 @@ then
 	export SAMUFLAGS="-j$nproc"
 fi
 ##########################################################################################
+
+if [[ $LC_BYOBU == "1" ]]; then
+    _byobu_sourced=1 . /data/data/com.termux/files/usr/bin/byobu-launch 2>/dev/null || true
+fi
