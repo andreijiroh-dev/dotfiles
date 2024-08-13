@@ -25,19 +25,19 @@
 # authentication hellscape
 [credential "https://github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = !gh auth git-credential
 [credential "https://gitlab.com"]
 	helper = 
-	helper = !/usr/bin/glab auth git-credential
+	helper = !glab auth git-credential
 [credential "https://mau.dev"]
 	helper = 
-	helper = !/usr/bin/glab auth git-credential
+	helper = !glab auth git-credential
 [credential "https://gitlab.alpinelinux.org"]
 	helper = 
-	helper = !/usr/bin/glab auth git-credential
+	helper = !glab auth git-credential
 
 # sendemail stuff (https://go.recaptime.eu.org/sendgmail)
 #[sendemail]
@@ -82,8 +82,8 @@
 #  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
 #[includeIf "gitdir/i:~/projects/labs.andreijiroh.dev"]
 #  path = ~/.config/git/ajhalili2006-experiments.include.gitconfig
-[includeIf "gitdir/i:~/git-projects/recaptime.dev/"]
-  path = ~/.config/git/recaptime-dev.include.gitconfig
+#[includeIf "gitdir/i:~/git-projects/recaptime.dev/"]
+#  path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:~/projects/recaptime.dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:/workspaces/recaptime.dev/"]
@@ -107,3 +107,5 @@
 	command = echo \"$(git config user.name) <$(git config user.email)>\"
 [push]
 	autoSetupRemote = true
+[safe]
+	directory = /storage/emulated/0/Documents/git/recaptime-dev/proxyparty
