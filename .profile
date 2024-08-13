@@ -9,14 +9,6 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
-
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -39,6 +31,33 @@ export POSIX_PROFILE_SOURCED=true
 if [ -f "$HOME/.config/localconfig.env" ]; then
   . "$HOME/.config/localconfig.env"
 fi
+
+##########################################################################################
+# Code snippets from https://git.sr.ht/~sircmpwn/dotfiles/tree/db5945a4/item/.env
+##########################################################################################
+if ls --version 2>&1 | grep -i gnu >/dev/null
+then
+	alias ls='ls --color=auto '
+elif ls --version 2>&1 | grep -i busybox >/dev/null
+then
+	alias ls='ls --color=auto '
+fi
+
+alias recent='ls -ltch'
+
+# Add optmizations for multicore builds
+if [ $(uname) = "Linux" ]
+then
+	nproc=$(grep '^processor' /proc/cpuinfo | wc -l)
+	if [ $nproc -gt 4 ]
+	then
+		# Reserve two cores
+		nproc=$((nproc - 2))
+	fi
+	export MAKEFLAGS="-j$nproc"
+	export SAMUFLAGS="-j$nproc"
+fi
+##########################################################################################
 
 if [[ $FF_BYOBU_ON_LOGIN != "" ]]; then
 fi

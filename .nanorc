@@ -1,5 +1,7 @@
-# User-wide nanorc based on my system-wide configs for stellapent-cier.tailnet
-# to make things portable as needed.
+# This is my user-wide settings for nano, similar to VS Code and friends.
+# Feel free to use it on your own, as long as you keep the copyright information
+# below intact.
+# SPDX-License-Identifier: MIT AND MPL-2.0 (excluding third party code)
 
 # Display line numbers to the left (and any anchors in the margin).
 set linenumbers
@@ -19,7 +21,7 @@ set guidestripe 80
 ## mouse clicks can be used to place the cursor, set the mark (with a
 ## double click), and execute shortcuts.  The mouse will work in the
 ## X Window System, and on the console when gpm is running.
-set mouse
+#set mouse
 
 # Switch on multiple file buffers (inserting a file will put it into a
 # separate buffer).
@@ -38,12 +40,14 @@ set tabsize 4
 set tabstospaces
 
 ## Snip whitespace at the end of lines when justifying or hard-wrapping.
-# set trimblanks
+set trimblanks
 
 # import included syntax highlighting for nano
+# TODO: Load them via ~/.local/share/nano for portability
 include "/usr/share/nano/*.nanorc"
 
 # Make regularly-used features have more usual shortcuts
+bind M-Z suspend main
 bind ^X cut main
 bind ^C copy main
 bind ^V paste all
@@ -52,14 +56,14 @@ bind ^S savefile main
 #bind ^W writeout main
 #bind ^O insert main
 #set multibuffer
-#bind ^H help all
-#bind ^H exit help
+bind ^H help all
+bind ^H exit help
 #bind ^F whereis all
 #bind ^G findnext all
 #bind ^B wherewas all
 #bind ^D findprevious all
 #bind ^R replace main
-#unbind ^U all
+unbind ^U all
 #unbind ^N main
 #unbind ^Y all
 #unbind M-J main
@@ -67,10 +71,10 @@ bind ^S savefile main
 bind ^A mark main
 #bind ^P location main
 bind ^T gotoline main
-#bind ^T gotodir browser
+bind ^T gotodir browser
 #bind ^T cutrestoffile execute
 #bind ^L linter execute
-#bind ^E execute main
+bind ^E execute main
 #bind ^K "{mark}{end}{zap}" main
 #bind ^U "{mark}{home}{zap}" main
 bind ^Z undo main
