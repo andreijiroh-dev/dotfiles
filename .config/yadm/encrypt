@@ -1,6 +1,5 @@
-.abuild/releases@andreijiroh.eu.org.rsa
-.abuild/releases@recaptime.eu.org.rsa
-.abuild/ci-builder-ajhalili2006@infra.recaptime.eu.org.rsa.pub
 .config/gh/hosts.yml
 .config/glab-cli/config.yml
 .ssh/personal-2023
+.ssh/google_compute_engine
+.ssh/launchpad
