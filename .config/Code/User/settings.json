@@ -23,6 +23,7 @@
     "window.customTitleBarVisibility": "auto",
     "window.confirmBeforeClose": "never",
     "window.titleBarStyle": "custom",
+    "window.menuBarVisibility": "visible",
     "gpgIndicator.enablePassphraseCache": true,
     "cSpell.userWords": [
         "Infinix",
@@ -65,4 +66,13 @@
             "url": "https://youtrack.recaptime.dev/issue/META-<num>"
         }
     ],
+    "settingsSync.ignoredSettings": [
+        "caddyfile.executable"
+    ],
+    "redhat.telemetry.enabled": true,
+    "window.autoDetectColorScheme": true,
+    "workbench.preferredDarkColorTheme": "GitHub Dark Colorblind (Beta)",
+    "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
+    "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
+    "workbench.preferredLightColorTheme": "GitHub Light Colorblind (Beta)"
 }

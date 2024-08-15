@@ -39,5 +39,10 @@
         "**/node_modules/*/**": true,
         "**/.cache/**": true
     },
-    "dotenv.enableAutocloaking": false
+    "dotenv.enableAutocloaking": false,
+    "search.exclude": {
+        "**/.cache": true
+    },
+    "search.useGlobalIgnoreFiles": true,
+    "search.useParentIgnoreFiles": true
 }
