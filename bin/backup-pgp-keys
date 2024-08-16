@@ -2,9 +2,9 @@
 
 # a script to generate backups for my GPG keys
 
-# literally all of active keys I use for different purposes, including some
-# I maintain (such as Recap Time Squad's keys for support and security issues
-DEFAULT_PRIVATE_KEYS="0527234A430387EA5695D824A30EBE40AD856D88 4D5E631758CB9CC45941B1CE67BFC91B3DA12BE8 EA957E7086E934F8DB9CAD21940047813E9D641C 5D69E717C5BC95731C2AD8BD120C218ED2291996 2CFF8721393487AEEF2C38987067DB4C7768552F 18C97CF46F06176E7EC43BDC7E4E0EF8B968A952 51D2F9710A20AAE56DC9A9AB77D63E4A0C267204 11F7802B423286A5FCF40AF48AEB225605921F92"
+# Literally all of active keys I use for different purposes. For things like shared keys,
+# I override them via PUBLIC_KEYS AND PRIVATE_KEYS variables at runtime.
+DEFAULT_PRIVATE_KEYS="0527234A430387EA5695D824A30EBE40AD856D88 4D5E631758CB9CC45941B1CE67BFC91B3DA12BE8 EA957E7086E934F8DB9CAD21940047813E9D641C 5D69E717C5BC95731C2AD8BD120C218ED2291996 2CFF8721393487AEEF2C38987067DB4C7768552F 18C97CF46F06176E7EC43BDC7E4E0EF8B968A952 51D2F9710A20AAE56DC9A9AB77D63E4A0C267204"
 DEFAULT_PUBLIC_KEYS="0527234A430387EA5695D824A30EBE40AD856D88 4D5E631758CB9CC45941B1CE67BFC91B3DA12BE8 EA957E7086E934F8DB9CAD21940047813E9D641C 5D69E717C5BC95731C2AD8BD120C218ED2291996"
 
 # allow anybody to automate this via envvars
@@ -17,7 +17,7 @@ BACKUP_FILE_PASSWORD=$(gpg --armor --gen-random 1 20)
 TIMESTAMP=$(date +%s)
 
 generate_pubkey_bak() {
-  echo "[Stage 1]: Export all public keys per PUBLIC_KEYS to '$EXPORT_DIR/personal-$TIMESTAMP.asc'"
+  echo "[Stage 1]: Export all public keys per PUBLIC_KEYS to '$EXPORT_DIR/pubkeys-$TIMESTAMP.asc'"
   echo
   sleep 3
 
@@ -29,16 +29,17 @@ generate_pubkey_bak() {
   for key in $PUBLIC_KEYS; do
     echo "Exporting keyid $key's public key"
     if [[ $_arg_dryrun == "true" ]]; then
-      echo "+ gpg --armor --export \"$key\" >> \"$EXPORT_DIR/personal-$TIMESTAMP.asc\""
+      echo "+ gpg --armor --export \"$key\" >> \"$EXPORT_DIR/pubkeys-$TIMESTAMP.asc\""
     else
-      gpg --armor --export "$key" >> "$EXPORT_DIR/personal-$TIMESTAMP.asc"
+      gpg --armor --export "$key" >> "$EXPORT_DIR/pubkeys-$TIMESTAMP.asc"
     fi
     sleep 3
   done
+  echo
 }
 
 generate_privkey_bak() {
-  echo "[Stage 2]: Export all private keys per PRIVATE_KEYS to '$EXPORT_DIR/backup-personal-$TIMESTAMP.asc'"
+  echo "[Stage 2]: Export all private keys per PRIVATE_KEYS to '$EXPORT_DIR/gpg-keys-backup-$TIMESTAMP.asc'"
   echo
   sleep 3
 
@@ -50,25 +51,22 @@ generate_privkey_bak() {
   if [[ $_arg_dryrun == "true" ]]; then
     for key in $PRIVATE_KEYS; do
       echo "Exporting keyid $key with private key"
-      echo "+ gpg --armor --export-secret-keys $key >> $EXPORT_DIR/backup-personal-$TIMESTAMP.asc"
+      echo "+ gpg --armor --export-secret-keys $key >> $EXPORT_DIR/gpg-keys-backup-$TIMESTAMP.asc"
       sleep 5
     done
-    echo "+ gpg --batch --asymmetric --passphrase \"$BACKUP_FILE_PASSWORD\" --output \"$EXPORT_DIR/private-keys-backup-$TIMESTAMP.sec.asc\""
+    echo "+ gpg --armor --batch --passphrase ${BACKUP_FILE_PASSWORD} --symmetric --output ${EXPORT_DIR}/gpg-keys-encrypted-backup-${TIMESTAMP} < ${EXPORT_DIR}/gpg-keys-backup-${TIMESTAMP}.asc"
     return
   fi
 
   for key in $PRIVATE_KEYS; do
     echo "Exporting keyid $key with private key"
-    gpg --armor --export-secret-keys "$key" >> "$EXPORT_DIR/backup-personal-$TIMESTAMP.asc"
+    gpg --armor --export-secret-keys "$key" >> "${EXPORT_DIR}/gpg-keys-backup-${TIMESTAMP}.asc"
     sleep 5
   done
-  echo "warning: Use the following passphrase for encrypting the private key backup in case"
-  echo "warning: both --batch and --passphrase flags didn't work in 10 seconds below."
-  echo "warning:"
-  echo "warning: $BACKUP_FILE_PASSWORD"
-  echo "warning:"
+  echo "[private-keys-backup] Here's the encrypted passphrase for ${BACKUP_FILE_PASSWORD}"
   sleep 10
-  gpg --batch --asymmetric --passphrase "$BACKUP_FILE_PASSWORD" --output "$EXPORT_DIR/private-keys-backup-$TIMESTAMP.sec.asc"
+  gpg --armor --batch --passphrase "${BACKUP_FILE_PASSWORD}" --symmetric --output "${EXPORT_DIR}/gpg-keys-encrypted-backup-${TIMESTAMP}" < "${EXPORT_DIR}/gpg-keys-backup-${TIMESTAMP}.asc"
+  echo
 }
 
 check_export_dir() {
@@ -97,7 +95,19 @@ check_export_dir() {
 }
 
 usage() {
-  echo "USAGE: [EXPORT_DIR=\$(pwd)] $0 [--only-public | --only-secret | --dry-run]"
+  echo "Usage: $0 [--only-public | --only-secret | --dry-run]"
+  echo
+  echo "Available params:"
+  echo "    --dry-run, -d        Run a simultation of commands"
+  echo "    --help               Show this help page"
+  echo "    --only-secret, -s    Only export secret keys"
+  echo "    --only-public, -p    Only export public keys"
+  echo
+  echo "Supported variables to override defaults:"
+  echo "    DEBUG                Set to any value to enable debug logging (via 'set -x')"
+  echo "    EXPORT_DIR           Directory for storing exports"
+  echo "    PUBLIC_KEYS          List of GPG keys for exporting public keys, seperated by spaces"
+  echo "    PRIVATE_KEYS         List of GPG keys for exporting private keys, seperated by spaces"
 }
 
 main() {
@@ -117,10 +127,10 @@ main() {
         --help | -h)
            usage; exit 0
            ;;
-        --public-keys-only | --pubkeys | --only-public | -p)
+        --pubkeys | --only-public | -p)
            _arg_pubkeys_only=true
            ;;
-        --private-keys-only | --secretkeys | --only-secret | -s)
+        --secretkeys | --only-secret | -s)
            _arg_secretkeys_only=true
            ;;
         --dryrun | --dry-run | -d)
