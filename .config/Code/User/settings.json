@@ -74,5 +74,6 @@
     "workbench.preferredDarkColorTheme": "GitHub Dark Colorblind (Beta)",
     "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
     "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
-    "workbench.preferredLightColorTheme": "GitHub Light Colorblind (Beta)"
+    "workbench.preferredLightColorTheme": "GitHub Light Colorblind (Beta)",
+    "workbench.trustedDomains.promptInTrustedWorkspace": true
 }

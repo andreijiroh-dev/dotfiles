@@ -21,14 +21,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "keyword.other.dotenv",
-                "settings": {
-                    "foreground": "#FF000000"
-                }
-            }
-        ]
+        "textMateRules": []
     },
     "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
     "workbench.productIconTheme": "material-product-icons",
@@ -46,4 +39,5 @@
     "sqltools.useNodeRuntime": true,
     "sqltools.connections": [],
     "arcade-vsc.notifications.startReminder": true,
+    "caddyfile.executable": "/home/gildedguy/.local/bin/caddy"
 }
