@@ -27,7 +27,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-export PATH="/usr/local/bin:$HOME/.local/bin:$HOME/bin${PATH:+:}$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts" # ~vern specifics and more
+# Add $GOPATH/bin into PATH
+export GOPATH="$HOME/.local/share/go"
+export PATH="$GOPATH/bin:$PATH"
 mesg n 2> /dev/null || true
 
 # then import the rest

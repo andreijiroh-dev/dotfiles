@@ -24,19 +24,6 @@ if [ -f "$HOME/.config/localconfig.env" ]; then
   . "$HOME/.config/localconfig.env"
 fi
 
-if command -v oh-my-posh >>/dev/null  && [[ $FF_USE_OHMYPOSH != "false" ]]; then
-  eval "$(oh-my-posh init bash)"
-else
-  if [[ $PROMPT_THEME == "disabled" ]]; then
-    true
-  elif [[ -f "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc" ]]; then
-    # shellcheck disable=SC1090
-    source "$HOME/.config/bash/shell-prompts/${PROMPT_THEME}.bashrc"
-  else
-    source "$HOME/.config/bash/shell-prompts/vern.bashrc"
-  fi
-fi
-
 ## Stage 1: Init custom vars and shortcuts before anything else           ##
 ##          Note that ~/.env and ~/.env.local should be loaded eariler on ##
 # Dotfiles stuff, maybe should be on ~/.env?
@@ -45,6 +32,7 @@ export DOTFILES_BIN="$DOTFILES_HOME/bin"
 # gopath should be on ~/.local/share/go to not fuck up with local install
 # at ~/go if exists
 export GOPATH="$HOME/.local/share/go"
+export PATH="${GOPATH}/bin:${PATH}"
 # Shut up, VS Code (not the OSS distributions off github:microsoft/vscode).
 # Don't let me pay for JetBrains IDEs or go nuts with nvim (or emacs, since
 # I'm both a bit neutral and off the rails at Vim vs Emacs debate). Also RIP
@@ -63,18 +51,4 @@ if [[ -d "$HOME/.bashbox" ]]; then
   source "$HOME/.bashbox/env"
 fi
 
-# Formerly: handle hostname generation for importing host-specific configs
-# TODO: Handle detection across distributions without chaos, especially where
-# Nix is installed (not NixOS)
-if [[ $WSL_DISTRO_NAME ]] && [[ $WSL_INTEROP ]]; then
-  HOSTNAME_BASH="$(cat /etc/hostname)-wsl-${WSL_DISTRO_NAME}"
-  export WSL=1 # similar to CODESPACES and GITPOD_WORKSPACE_ID vars
-else
-  HOSTNAME_BASH="$(cat /etc/hostname)"
-fi
-export HOSTNAME_BASH
-
-for file in "$HOME/.config/bash/hosts/${HOSTNAME_BASH}.bashrc" "${HOME}/.config/bash/bashrc"; do
-    # shellcheck disable=SC1090
-    [ -f "$file" ] && . "$file"
-done
+source "$HOME/.config/bash/bashrc"
