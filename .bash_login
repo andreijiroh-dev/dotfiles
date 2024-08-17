@@ -1,18 +1,15 @@
-#!/usr/bin/env bash
-# # shellcheck disable=SC2046,SC1091,SC2155
+#!/data/data/com.termux/files/usr/bin/env bash
+# shellcheck disable=SC2046,SC1091,SC2155
 
-# Stage 0: Source dotenv stuff from homedir
+# This is a minimal bash login scrupt for loading local
+# configs as well as hooking in byobu on login.
+
+# source local vars
+# TODO: Hook up with dotenvx for decrypting encrypted secrets
 source "$HOME/.env"
 if [[ -f "$HOME/.env.local" ]]; then
   source "$HOME/.env.local"
   export LOCAL_DOTENV_LOADED=true
-fi
-
-if [[ $TERMUX ]]; then
-  export SSH_AGENT_=todo
-elif command -v keychain >> /dev/null; then
-  export KEYCHAIN_PATH=$(command -v keychain)
-  eval $(keychain --agents gpg,ssh --eval)
 fi
 
 # how about detecting local configs
@@ -74,3 +71,6 @@ then
 fi
 ##########################################################################################
 
+if [[ $FF_BYOBU_ON_LOGIN == "true" || $LC_BYOBU == "1" ]]; then
+    _byobu_sourced=1 . /data/data/com.termux/files/usr/bin/byobu-launch 2>/dev/null || true
+fi

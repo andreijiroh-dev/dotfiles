@@ -67,6 +67,6 @@ then
 fi
 ##########################################################################################
 
-if [[ $LC_BYOBU == "1" ]]; then
+if [[ $FF_BYOBU_ON_LOGIN == "true" || $LC_BYOBU == "1" ]]; then
     _byobu_sourced=1 . /data/data/com.termux/files/usr/bin/byobu-launch 2>/dev/null || true
 fi
