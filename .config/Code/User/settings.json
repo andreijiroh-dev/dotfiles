@@ -1,14 +1,7 @@
 {
     "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
     "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "keyword.other.dotenv",
-                "settings": {
-                    "foreground": "#FF000000"
-                }
-            }
-        ]
+        "textMateRules": []
     },
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "material-product-icons",
@@ -75,5 +68,8 @@
     "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
     "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
     "workbench.preferredLightColorTheme": "GitHub Light Colorblind (Beta)",
-    "workbench.trustedDomains.promptInTrustedWorkspace": true
+    "workbench.trustedDomains.promptInTrustedWorkspace": true,
+    "files.associations": {
+        "known_hosts": "plaintext"
+    }
 }
