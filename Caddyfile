@@ -1,0 +1,6 @@
+{
+	admin unix//home/ajhalili2006/.caddy-admin.sock
+}
+
+import "./.config/caddyfiles/p.psf.lt.Caddyfile"
+import "./.config/caddyfiles/hackclub.app.Caddyfile"

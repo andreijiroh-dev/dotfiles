@@ -1,0 +1,11 @@
+# Caddyfile configuration for p.psf.lt
+http://ajhalili2006.p.projectsegfau.lt {
+	bind unix/.webserver.sock|777
+	handle * {
+		redir https://andreijiroh.xyz{uri}
+	}
+	handle /things/* {
+		redir https://cdn.andreijiroh.xyz/{uri}
+		encode gzip
+	}
+}
