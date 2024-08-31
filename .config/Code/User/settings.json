@@ -71,5 +71,43 @@
     "workbench.trustedDomains.promptInTrustedWorkspace": true,
     "files.associations": {
         "known_hosts": "plaintext"
-    }
+    },
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    "terminal.integrated.copyOnSelection": true,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.enableVisualBell": true,
+    "terminal.integrated.hideOnStartup": "whenEmpty",
+    "terminal.integrated.ignoreProcessNames": [
+        "starship",
+        "oh-my-posh",
+        "bash",
+        "zsh",
+        "sh"
+    ],
+    "terminal.integrated.stickyScroll.enabled": true,
+    "editor.tabSize": 2,
+    "html.format.indentInnerHtml": true,
+    "githubIssues.queries": [
+        {
+            "label": "My Issues",
+            "query": "is:open assignee:${user} repo:${owner}/${repository}",
+            "groupBy": [
+                "milestone"
+            ]
+        },
+        {
+            "label": "Created Issues in this repository",
+            "query": "author:${user} state:open repo:${owner}/${repository} sort:created-desc"
+        },
+        {
+            "label": "Recent Issues in this repository",
+            "query": "state:open repo:${owner}/${repository} sort:updated-desc"
+        },
+        {
+            "label": "Created Issues by Authenicated User",
+            "query": "author:${user} state:open sort:created-desc"
+        }
+    ],
+    "terminal.integrated.persistentSessionScrollback": 100000,
+    "arcade-vsc.notifications.startReminder": false
 }
