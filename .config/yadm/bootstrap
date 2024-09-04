@@ -6,7 +6,7 @@
 
 # Source: https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/contrib/bootstrap/bootstrap-in-dir
 
-set -eu
+set -e
 
 if [[ $DEBUG != "" ]]; then
   set -x

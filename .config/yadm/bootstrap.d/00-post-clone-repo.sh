@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ $DEBUG != "" ]; then
+if [[ $DEBUG != "" ]]; then
   set -x
 fi
 
