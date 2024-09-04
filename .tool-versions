@@ -1,7 +1,7 @@
-nodejs 20.16.0
-deno 1.45.5
+nodejs 22.8.0
+deno 1.46.3
 direnv 2.34.0
 python 3.12.3
-glab 1.45.0
-golang 1.22.6
+glab 1.46.0
+golang 1.23.0
 shellcheck 0.10.0
