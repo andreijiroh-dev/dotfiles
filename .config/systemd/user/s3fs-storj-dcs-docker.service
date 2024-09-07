@@ -4,10 +4,9 @@ Documentation=https://storj.dev/dcs/third-party-tools/s3fs
 
 [Service]
 WorkingDirectory=~
-ExecStart="s3fs docker-mounts ~/.local/docker-volumes -o passwd_file=~/.secrets/sotrj-dcs-dockervolumes.key -o dbglevel=info -f -o curldbg -o url=https://gateway.storjshare.io/ -o use_path_request_style"
-RestartSec=30s
+ExecStart=/home/ajhalili2006/.local/bin/s3fs docker-mounts ./.local/docker-volumes -o passwd_file=./.secrets/storj-dcs-dockervolumes.key -o dbglevel=info -f -o curldbg -o url=https://gateway.storjshare.io/ -o use_path_request_style -ouse_cache=/tmp/s3fs/docker-mounts -o umask=011,mp_umask=0011
+RestartSec=15s
 Restart=on-failure
-StartLimitBurst=3
 
 [Install]
 WantedBy=default.target
