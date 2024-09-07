@@ -1,0 +1,8 @@
+[Unit]
+Description="S3FS mount to sj://docker-mounts"
+Documentation=https://storj.dev/dcs/third-party-tools/s3fs
+
+[Service]
+ExecStart="s3fs docker-mounts $HOME/.local/docker-volumes -o passwd_file=$HOME/.secrets/sotrj-dcs-dockervolumes.key -o dbglevel=info -f -o curldbg -o url=https://gateway.storjshare.io/ -o use_path_request_style"
+RestartSec=30s
+Restart=on-failure
