@@ -14,10 +14,15 @@ http://ajhalili2006.hackclub.app {
 http://hackclub.beta.lorebooks.wiki {
 	bind unix/.hackclub.beta.lorebooks.wiki.webserver.sock|777
 
-	# Add your Caddy directives here!
+	redir https://hackclub.wiki{uri}
 }
 http://hackclub.lorebooks.wiki {
 	bind unix/.hackclub.lorebooks.wiki.webserver.sock|777
 
-	redir https://hackclub.beta.lorebooks.wiki{uri}
+	redir https://hackclub.wiki{uri}
+}
+
+http://matrix.andreijiroh.dev {
+  bind unix/.matrix.andreijiroh.dev.webserver.sock|777
+
 }
