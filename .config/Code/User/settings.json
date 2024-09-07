@@ -1,7 +1,14 @@
 {
     "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
     "editor.tokenColorCustomizations": {
-        "textMateRules": []
+        "textMateRules": [
+            {
+                "scope": "keyword.other.dotenv",
+                "settings": {
+                    "foreground": "#FF000000"
+                }
+            }
+        ]
     },
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "material-product-icons",
@@ -84,7 +91,6 @@
         "zsh",
         "sh"
     ],
-    "terminal.integrated.stickyScroll.enabled": true,
     "editor.tabSize": 2,
     "html.format.indentInnerHtml": true,
     "githubIssues.queries": [
@@ -109,5 +115,6 @@
         }
     ],
     "terminal.integrated.persistentSessionScrollback": 100000,
-    "arcade-vsc.notifications.startReminder": false
+    "arcade-vsc.notifications.startReminder": false,
+    "keyboard.layout": "us"
 }
