@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# A wrapper script as an alias for calling "systemctl --user"
+
+if [[ $1 == "" ]]; then
+  echo "Usage: $0 command..."
+  echo "For more information on how to use systemctl on userspace, see man:systemctl(1)"
+  exit 1
+fi
+
+exec systemctl --user "$@"
