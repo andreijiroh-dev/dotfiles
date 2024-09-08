@@ -46,7 +46,8 @@
     "search.useGlobalIgnoreFiles": true,
     "search.useParentIgnoreFiles": true,
     "files.associations": {
-        "/.config/caddyfiles/*.Caddyfile": "caddyfile"
+        "/.config/caddyfiles/*.Caddyfile": "caddyfile",
+        "/.config/systemd/user/*.service": "tex"
     },
     "material-icon-theme.files.associations": {
         "*.Caddyfile": "caddyfile"

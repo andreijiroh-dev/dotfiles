@@ -1,13 +1,11 @@
+[Audio Preview Settings]
+Autoplay=false
+
 [Desktop Entry]
-DefaultProfile=Byobu.profile
+DefaultProfile=Meta Config.profile
 
 [General]
 ConfigVersion=1
-
-[KFileDialog Settings]
-Recent Files[$e]=personal,file:$HOME/.ssh/personal
-Recent URLs[$e]=file:$HOME/.ssh/
-detailViewIconSize=16
 
 [KonsoleWindow]
 RememberWindowSize=false
@@ -60,7 +58,6 @@ HDMI-1 eDP-1 XPosition 1366x768 HDMI-1=1366
 HDMI-1 eDP-1 YPosition 1366x768 HDMI-1=67
 MenuBar=Enabled
 RestorePositionForNextInstance=false
-State=AAAA/wAAAAD9AAAAAQAAAAAAAAD1AAACjfwCAAAAAvsAAAAiAFEAdQBpAGMAawBDAG8AbQBtAGEAbgBkAHMARABvAGMAawAAAAAA/////wAAAXwBAAAD+wAAABwAUwBTAEgATQBhAG4AYQBnAGUAcgBEAG8AYwBrAAAAAC4AAAKNAAABFQEAAAMAAAOPAAAB/AAAAAQAAAAEAAAACAAAAAj8AAAAAQAAAAIAAAACAAAAFgBtAGEAaQBuAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAAAAABwAcwBlAHMAcwBpAG8AbgBUAG8AbwBsAGIAYQByAQAAAOj/////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
 eDP-1=eDP-1
 eDP-1 HDMI-1=eDP-1
