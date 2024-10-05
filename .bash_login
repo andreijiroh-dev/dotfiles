@@ -28,5 +28,6 @@ export GOPATH="$HOME/.local/share/go"
 # and https://drewdevault.com/2021/08/06/goproxy-breaks-go.html
 export GOPROXY=direct GOSUMDB=off
 export PATH="${DOTFILES_BIN}:${GOPATH}/bin:${HOME}/.local/bin:${PATH}"
+source .bashrc
 
 _byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
