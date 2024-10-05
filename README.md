@@ -7,7 +7,7 @@ to fix it in, built from scratch and based on <https://drewdevault.com/2019/12/3
 
 ```bash
 # Working on it soon.
-curl -fsSL https://scripts.andreijiroh.xyz/dotfiles/setup.sh | bash -
+curl -fsSL https://scripts.andreijiroh.dev/dotfiles/setup.sh | bash -
 ```
 
 ## Available Git mirrors
@@ -16,9 +16,9 @@ This project is hosted on [hosted instance of sourcehut git](https://git.sr.ht) 
 [`~ajhalili2006/dotfiles`][git.sr.ht] Git repository, alongside the following
 Git mirrors:
 
-* mau.dev: <https://mau.dev/andreijiroh.dev/dotfiles> (technically canonical due
+* mau.dev: <https://mau.dev/andreijiroh-dev/dotfiles> (technically canonical due
 to how mirroring work and usualy pushed there first)
-* GitHub: <https://github.com/ajhalili2006/dotfiles>
+* GitHub: <https://github.com/andreijiroh-dev>
 * Launchpad.net: <https://git.launchpad.net/ajhalili2006-dotfiles>
 * ~vern git: <https://git.vern.cc/ajhalili2006/dotfiles-modern>
 * tildegit: <https://tildegit.org/ajhalili2006/dotfiles-modern>
@@ -33,7 +33,7 @@ to how mirroring work and usualy pushed there first)
 # on a Alpine Linux sandbox VM (or chroot)
 apk add yadm git gnupg
 
-yadm clone https://mau.dev/andreijiroh.dev/dotfiles
+yadm clone https://mau.dev/andreijiroh-dev/dotfiles
 yadm restore --staged $HOME
 yadm checkout -- $HOME
 
