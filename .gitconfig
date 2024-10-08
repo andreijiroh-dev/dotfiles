@@ -69,11 +69,13 @@
     signoff-commit = commit --signoff
     signoff = signoff-commit
     remotes = remote -v
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [core]
 #	editor = flatpak run re.sonny.Commit
 
@@ -93,6 +95,8 @@
 [includeIf "gitdir/i:/workspaces/recaptime-dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:/var/git/recaptime-dev/"]
+  path = ~/.config/git/recaptime-dev.include.gitconfig
+[includeIf "gitdir/i:~/git/recaptime-dev/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig
 [includeIf "gitdir/i:/workspaces/lorebooks.wiki/"]
   path = ~/.config/git/recaptime-dev.include.gitconfig

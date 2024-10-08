@@ -26,3 +26,24 @@ http://matrix.andreijiroh.dev {
   bind unix/.matrix.andreijiroh.dev.webserver.sock|777
 
 }
+
+http://blog.andreijiroh.dev {
+	bind unix/.blog.andreijiroh.dev.webserver.sock|777
+  reverse_proxy localhost:33291 {
+    header_up X-Forwarded-Proto https
+  }
+}
+
+http://notepad.recaptime.dev {
+ bind unix/.notepad.recaptime.dev.webserver.sock|777
+ reverse_proxy localhost:34171 {
+    header_up X-Forwarded-Proto https
+ }
+}
+
+http://blog.recaptime.dev {
+	bind unix/.blog.recaptime.dev.webserver.sock|777
+	reverse_proxy localhost:37023 {
+    header_up X-Forwarded-Proto https
+ }
+}
