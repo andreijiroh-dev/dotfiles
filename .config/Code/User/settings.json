@@ -1,14 +1,6 @@
 {
-    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
     "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "keyword.other.dotenv",
-                "settings": {
-                    "foreground": "#FF000000"
-                }
-            }
-        ]
+        "textMateRules": []
     },
     "workbench.iconTheme": "material-icon-theme",
     "workbench.productIconTheme": "material-product-icons",
@@ -21,7 +13,6 @@
     "git.confirmSync": false,
     "git.autofetch": true,
     "window.customTitleBarVisibility": "auto",
-    "window.confirmBeforeClose": "never",
     "window.titleBarStyle": "custom",
     "window.menuBarVisibility": "visible",
     "gpgIndicator.enablePassphraseCache": true,
@@ -70,7 +61,6 @@
         "caddyfile.executable"
     ],
     "redhat.telemetry.enabled": true,
-    "window.autoDetectColorScheme": true,
     "workbench.preferredDarkColorTheme": "GitHub Dark Colorblind (Beta)",
     "workbench.preferredHighContrastColorTheme": "GitHub Dark High Contrast",
     "workbench.preferredHighContrastLightColorTheme": "GitHub Light High Contrast",
@@ -116,5 +106,32 @@
     ],
     "terminal.integrated.persistentSessionScrollback": 100000,
     "arcade-vsc.notifications.startReminder": false,
-    "keyboard.layout": "us"
+    "keyboard.layout": "us",
+    "conventionalCommits.lineBreak": "nw",
+    "conventionalCommits.promptCI": true,
+    "conventionalCommits.showEditor": true,
+    "conventionalCommits.scopes": [
+        "global",
+        "github-actions",
+        "gitlab-ci",
+        "readme",
+        "license",
+        "utils",
+        "scripts"
+    ],
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "gpgIndicator.statusStyle": "fingerprint",
+    "remote.SSH.remotePlatform": {
+        "*.gitpod.local": "linux",
+        "*.gitpod.remote": "linux"
+    },
+    "[markdown]": {
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+    },
+    "workbench.colorTheme": "GitHub Dark Colorblind (Beta)",
+    "remoteHub.commitDirectlyWarning": "off",
+    "github.experimental.multipleAccounts": true
 }

@@ -12,18 +12,20 @@ curl -fsSL https://scripts.andreijiroh.dev/dotfiles/setup.sh | bash -
 
 ## Available Git mirrors
 
-This project is hosted on [hosted instance of sourcehut git](https://git.sr.ht) at the
-[`~ajhalili2006/dotfiles`][git.sr.ht] Git repository, alongside the following
-Git mirrors:
+This project is hosted on [~tulir]'s Manimum GitLab instance ([mau.dev]) at
+<https://mau.dev/andreijiroh-dev/dotfiles>, although I manitain the following
+git mirrors for conveience:
 
 * mau.dev: <https://mau.dev/andreijiroh-dev/dotfiles> (technically canonical due
 to how mirroring work and usualy pushed there first)
-* GitHub: <https://github.com/andreijiroh-dev>
+* GitHub: <https://github.com/andreijiroh-dev/dotfiles>
 * Launchpad.net: <https://git.launchpad.net/ajhalili2006-dotfiles>
 * ~vern git: <https://git.vern.cc/ajhalili2006/dotfiles-modern>
 * tildegit: <https://tildegit.org/ajhalili2006/dotfiles-modern>
+* Hack Club Nest: <https://git.hackclub.app/andreijiroh-dev/dotfiles>
 
-[git.sr.ht]: https://git.sr.ht/~ajhalili2006/dotfiles
+[~tulir]: https://mau.fi
+[mau.dev]: https://mau.dev
 
 ## Setup
 

@@ -72,8 +72,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
-source "${HOME}/.config/bash/aliases"
-source "${HOME}/.config/bash/functions"
+source "${HOME}/.config/bash/aliases.bashrc"
+source "${HOME}/.config/bash/functions.bashrc"
 source "${HOME}/.config/bash/autoloader.bashrc"
 
 # enable programmable completion features (you don't need to enable

@@ -8,8 +8,9 @@ DefaultProfile=Meta Config.profile
 ConfigVersion=1
 
 [KonsoleWindow]
+AllowMenuAccelerators=true
+FocusFollowsMouse=true
 RememberWindowSize=false
-ShowWindowTitleOnTitleBar=true
 
 [MainWindow]
 1209x683 screen: Height=624
