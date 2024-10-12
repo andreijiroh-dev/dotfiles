@@ -1,7 +1,7 @@
 {
     "editor.formatOnPaste": true,
     "git.autofetch": true,
-    "[markdown]": {
+    "[markdown]":  {
         "editor.wordWrap": "on",
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -18,7 +18,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "editor.tokenColorCustomizations": {
         "textMateRules": []
@@ -46,5 +46,8 @@
     "workbench.editor.limit.excludeDirty": true,
     "workbench.editor.limit.enabled": true,
     "workbench.editor.limit.perEditorGroup": true,
-    "terminal.integrated.scrollback": 100000
+    "terminal.integrated.scrollback": 100000,
+    "diffEditor.maxComputationTime": 0,
+    "editor.tabSize": 2,
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }
