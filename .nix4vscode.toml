@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MPL-2.0
-# To use thhis configuration, you must have nix4vscode installed, either
-# via "cargo build" or good old "nix develop" from a local clone of the
-# tooling's sources.
+# To use thhis configuration, you must have nix4vscode installed, either via "cargo build"
+# or good old "nix develop" from a local clone of the tooling's sources. This is currently
+# manually managed to be in sync with code --list-extensions while Settings Sync is enabled.
 
 # TODO: Bump this on every VS Code release here.
 vscode_version = "1.96.0"
@@ -30,6 +30,103 @@ extension_name = "gitlens"
 [[extensions]]
 publisher_name = "vivaxy"
 extension_name = "vscode-conventional-commits"
+[[extensions]]
+publisher_name = "gitlab"
+extension_name = "gitlab-workflow"
+[[extensions]]
+publisher_name = "exiasr"
+extension_name = "hadolint"
+[[extensions]]
+publisher_name = "editorconfig"
+extension_name = "editorconfig"
+[[extensions]]
+publisher_name = "donjayamanne"
+extension_name = "githistory"
+[[extensions]]
+publisher_name = "devfile"
+extension_name = "vscode-devfile"
+[[extensions]]
+publisher_name = "tailscale"
+extension_name = "vscode-tailscale"
+[[extensions]]
+publisher_name = "timonwong"
+extension_name = "shellcheck"
+
+# github
+[[extensions]]
+publisher_name = "github"
+extension_name = "copilot"
+[[extensions]]
+publisher_name = "github"
+extension_name = "vscode-github-actions"
+[[extensions]]
+publisher_name = "github"
+extension_name = "remotehub"
+[[extensions]]
+publisher_name = "github"
+extension_name = "copilot-chat"
+[[extensions]]
+publisher_name = "github"
+extension_name = "codespaces"
+[[extensions]]
+publisher_name = "github"
+extension_name = "vscode-pull-request-github"
+
+# markdown
+[[extensions]]
+publisher_name = "aikebang"
+extension_name = "mkdocs-syntax-highlight"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "emojisense"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "markdown-checkbox"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "github-markdown-preview"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "markdown-emoji"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "markdown-footnotes"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "markdown-mermaid"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "markdown-preview-github-styles"
+[[extensions]]
+publisher_name = "bierner"
+extension_name = "markdown-yaml-preamble"
+
+# microsoft
+[[extensions]]
+publisher_name = "ms-azuretools"
+extension_name = "vscode-docker"
+# temporarily commented out per https://github.com/nix-community/nix4vscode/issues/135
+#[[extensions]]
+#publisher_name = "ms-python"
+#extension_name = "debugpy"
+[[extensions]]
+publisher_name = "ms-python"
+extension_name = "python"
+[[extensions]]
+publisher_name = "ms-python"
+extension_name = "vscode-pylance"
+[[extensions]]
+publisher_name = "ms-vscode"
+extension_name = "azure-repos"
+[[extensions]]
+publisher_name = "ms-vscode"
+extension_name = "remote-repositories"
+[[extensions]]
+publisher_name = "ms-vscode"
+extension_name = "vscode-github-issue-notebooks"
+[[extensions]]
+publisher_name = "ms-vscode"
+extension_name = "wordcount"
 
 # programming languages + IntelliSense
 [[extensions]]
@@ -44,3 +141,90 @@ extension_name = "vscode-yaml"
 [[extensions]]
 publisher_name = "unifiedjs"
 extension_name = "vscode-mdx"
+[[extensions]]
+publisher_name = "davidanson"
+extension_name = "vscode-markdownlint"
+[[extensions]]
+publisher_name = "golang"
+extension_name = "go"
+[[extensions]]
+publisher_name = "mikestead"
+extension_name = "dotenv"
+[[extensions]]
+publisher_name = "joel-harkes"
+extension_name = "emlviewer"
+[[extensions]]
+publisher_name = "leighlondon"
+extension_name = "eml"
+[[extensions]]
+publisher_name = "matthewpi"
+extension_name = "caddyfile-support"
+[[extensions]]
+publisher_name = "bradlc"
+extension_name = "vscode-tailwindcss"
+[[extensions]]
+publisher_name = "christan-kohler"
+extension_name = "npm-intellisense"
+[[extensions]]
+publisher_name = "codezombiech"
+extension_name = "gitignore"
+[[extensions]]
+publisher_name = "codiium"
+extension_name = "wrangler"
+[[extensions]]
+publisher_name = "coolbear"
+extension_name = "systemd-unit-file"
+[[extensions]]
+publisher_name = "dbaeumer"
+extension_name = "vscode-eslint"
+[[extensions]]
+publisher_name = "drknoxy"
+extension_name = "eslint-disable-snippets"
+[[extensions]]
+publisher_name = "esbenp"
+extension_name = "prettier-vscode"
+[[extensions]]
+publisher_name = "martellaj"
+extension_name = "license-injector"
+[[extensions]]
+publisher_name = "mtxr"
+extension_name = "sqltools"
+[[extensions]]
+publisher_name = "mtxr"
+extension_name = "sqltools-mysql"
+[[extensions]]
+publisher_name = "mtxr"
+extension_name = "sqltools-pg"
+[[extensions]]
+publisher_name = "mtxr"
+extension_name = "sqltools-sqlite"
+[[extensions]]
+publisher_name = "orta"
+extension_name = "vscode-jest"
+[[extensions]]
+publisher_name = "prisma"
+extension_name = "prisma"
+[[extensions]]
+publisher_name = "r3inbowari"
+extension_name = "gomodexplorer"
+[[extensions]]
+publisher_name = "socheatsok78"
+extension_name = "dotenv-vscode-stripped"
+[[extensions]]
+publisher_name = "streetsidesoftware"
+extension_name = "code-spell-checker"
+[[extensions]]
+publisher_name = "tamasfe"
+extension_name = "even-better-toml"
+[[extensions]]
+publisher_name = "ultram4rine"
+extension_name = "vscode-choosealicense"
+[[extensions]]
+publisher_name = "wdhongtw"
+extension_name = "gpg-indicator"
+[[extensions]]
+publisher_name = "xabikos"
+extension_name = "javascriptsnippets"
+[[extensions]]
+publisher_name = "yahyabatulu"
+extension_name = "vscode-markdown-alert"

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -o pipefail
+
+if [[ $DEBUG != "" ]]; then
+  set -x
+fi
+
+NIX4VSCODE_PATH=$(command -v nix4vscode)
+NIX4VSCODE=${NIX4VSCODE:-"$HOME/bin/nix4vscode"}
+
+"$NIX4VSCODE" --output "$HOME/.config/nixos/shared/vscode-extensions.nix" "$HOME/.nix4vscode.toml"
+"$NIX4VSCODE" --openvsx --output "$HOME/.config/nixos/shared/openvsx-extensions.nix" "$HOME/.nix4vscode.toml" || true
