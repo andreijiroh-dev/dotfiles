@@ -9,13 +9,14 @@
     [
       ./hardware-configuration.nix
       ../../shared/meta-configs.nix
+      ../../shared/systemd.nix
       ../../shared/networking.nix
-      ../../shared/firewall.nix
-      ../../shared/tailscale.nix
-      ../../shared/ssh.nix
       ../../shared/locale.nix
-      ../../shared/kde-plasma.nix
-      ../../shared/bluetooth.nix
+      ../../shared/server/tailscale.nix
+      ../../shared/server/ssh.nix
+      ../../shared/desktop/kde-plasma.nix
+      ../../shared/desktop/bluetooth.nix
+      ../../shared/desktop/firewall.nix
     ];
 
   # Bootloader.
@@ -94,7 +95,8 @@
   # home-manager specifics
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
-  home-manager.users.gildedguy = (import ./users/gildedguy.nix);
+  home-manager.users.gildedguy = import ./users/gildedguy.nix;
+  #programs.home-manager.enable = true; # allow home-manager to manage itself
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -109,11 +111,15 @@
     btop
     htop
     google-chrome
+    direnv
+    cachix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   programs.mtr.enable = true;
+
+  # enable gpg-agent with SSH support
   programs.gnupg.agent = {
      enable = true;
      enableSSHSupport = true;
