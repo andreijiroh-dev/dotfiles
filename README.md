@@ -2,7 +2,8 @@
 
 Yup, I'm starting a fresh for my dotfiles for 2025 and beyond, now with
 [nixpkgs](https://nixos.org) and [home-manager](https://nix-community.github.io/home-manager).
-(Don't worry, I'll be maintaining the yadm-era setup for non-Nix setups seperately)
+(Don't worry, I'll be maintaining the yadm-era setup for non-Nix setups seperately
+as seperate branches for prosperity.)
 
 ## Usage
 
@@ -16,7 +17,7 @@ Flakes) for the setup to work.
 cd ~
 git init
 git remote add origin https://mau.dev/andreijiroh-dev/dotfiles
-# TODO: add the rest
+git checkout -f main
 ```
 
 ## Directory + File Map
@@ -27,3 +28,15 @@ git remote add origin https://mau.dev/andreijiroh-dev/dotfiles
 usually in sync
 * [`.config/home-manager`](./.config/home-manager/) - Home-manager configs, mostly CLI and desktop apps go here
 * [`bin`](./bin) - Shell scripts! (because Nix looks like Haskell to me)
+
+## Related repositories
+
+* [`@andreijiroh-dev/nixops-config`][nixops-config] - my NixOS + home-manager configs, with flake support (TODO: turn `.config/nixos` into submodule)
+* [`@andreijiroh-dev/infraops`][infraops] - the homelab config in pure Docker Compose insanity, alongside DNS records YAML files for octoDNS
+* [`@recaptime-dev/infra`][rtdev-infra] - @recaptime-dev's infra configurations and home for our Infra Issue Tracker
+* [`@recaptime-dev/infra-internals`][rtdev-infra-internals] - @recaptime-dev's infra configs for Portainer (the public repo version only have `stack.env` files removed via `git-filter-repo`)
+
+[nixops-config]: https://github.com/andreijiroh-dev/nixops-config
+[infraops]: https://github.com/andreijiroh-dev/infraops
+[rtdev-infra]: https://github.com/recaptime-dev/infra
+[rtdev-infra-internals]: https://github.com/internal-recaptime-dev/infra-internals-public
