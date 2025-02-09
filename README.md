@@ -7,11 +7,9 @@ as seperate branches for prosperity.)
 
 ## Usage
 
-### Using my Nixpkgs config
+### Plain dotfiles
 
-Make sure Git is installed in your NixOS/nixpkgs setup (via `/etc/nixos/configuration.nix` or
-the usual `nix-env -iA nixpkgs.gitFull` or `nix profile install nixpkgs#gitFull` if using
-Flakes) for the setup to work.
+Make sure Git is installed in your non NixOS/nixpkgs setup for the setup to work.
 
 ```bash
 cd ~
@@ -20,12 +18,46 @@ git remote add origin https://mau.dev/andreijiroh-dev/dotfiles
 git checkout -f main
 ```
 
+If you prefer to cook up with yadm:
+
+```bash
+yadm clone https://github.com/andreijiroh-dev/dotfiles
+ln -s ./.local/share/yadm/TBD ./.git # so that we can normally use git here
+```
+
+### Using nix flakes + home-manager
+
+```bash
+# A quick home-manager switch should do the trick
+nix run home-manager/master -- switch --flake github:andreijiroh-dev/nixops-config
+
+# otherwise a quick copy paste configs should fix 'em if you use a different username
+# (not different home directory yet!)
+```
+
+#### Updating `authorized_keys` with Nix
+
+1. Update [`shared/ssh-keys.nix`][ssh-keys] and `users.users.<gildedguy|ajhalili2006>.openssh.authorizedKeys.keys`
+2. Run `nixos-rebuild switch` to regenerate `/etc/ssh/authorized_keys.d/<gildedguy|ajhalili2006>`.
+3. Copy that file back to `.ssh/authorized_keys`. Commit changes and push.
+4. On the affected machines, just `git pull` away.
+
+### Using 1Password SSH Agent integration
+
+> [!WARNING]
+> 1Password Desktop app must be installed and enabled `Use SSH Agent` in
+> **Settings** -> **Developer** -> **SSH Agent** after signing in.
+
+Note that this should work on most desktop apps, although if you're in Nest (and friends
+with RDP access), connect to there first and authenicate. You may need to adjust security
+settings in the desktop app to ensure nothing go wrong.
+
 ## Directory + File Map
 
 ### Essientials
 
 * [`.config/nixos`](./.config/nixos/) - my NixOS configuration as a flake, including system tools,
-usually in sync
+usually in sync (TODO: Swap into Git module of <https://github.com/andreijiroh-dev/nixops-config> soon)
 * [`.config/home-manager`](./.config/home-manager/) - Home-manager configs, mostly CLI and desktop apps go here
 * [`bin`](./bin) - Shell scripts! (because Nix looks like Haskell to me)
 
@@ -35,6 +67,10 @@ usually in sync
 * [`@andreijiroh-dev/infraops`][infraops] - the homelab config in pure Docker Compose insanity, alongside DNS records YAML files for octoDNS
 * [`@recaptime-dev/infra`][rtdev-infra] - @recaptime-dev's infra configurations and home for our Infra Issue Tracker
 * [`@recaptime-dev/infra-internals`][rtdev-infra-internals] - @recaptime-dev's infra configs for Portainer (the public repo version only have `stack.env` files removed via `git-filter-repo`)
+
+## License
+
+MPL-2.0
 
 [nixops-config]: https://github.com/andreijiroh-dev/nixops-config
 [infraops]: https://github.com/andreijiroh-dev/infraops

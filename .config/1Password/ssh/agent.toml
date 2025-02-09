@@ -1,0 +1,53 @@
+# SPDX-License-Identifier: MPL-2.0
+# This is the 1Password SSH agent config file, which allows you to customize the
+# behavior of the SSH agent running on this machine.
+#
+# You can use it to:
+# * Enable keys from other vaults than the Private vault
+# * Control the order in which keys are offered to SSH servers
+#
+# EXAMPLE
+#
+# By default, all keys in your Private vault(s) are enabled:
+#
+#  [[ssh-keys]]
+#  vault = "Private"
+#
+# You can enable more keys by adding more `[[ssh-keys]]` entries.
+# For example, to first enable item "My SSH Key" from "My Custom Vault":
+#
+#  [[ssh-keys]]
+#  item = "My SSH Key"
+#  vault = "My Custom Vault"
+#
+#  [[ssh-keys]]
+#  vault = "Private"
+#
+# You can test the result by running:
+#
+#  SSH_AUTH_SOCK=~/.1password/agent.sock ssh-add -l
+#
+# More examples can be found here:
+#  https://developer.1password.com/docs/ssh/agent/config
+
+# main key since 2022
+[[ssh-keys]]
+vault = "Personal"
+item = "ztyawq2e2iajh2h76ls2rls7aq"
+account = "Andrei Jiroh Halili"
+# launchpad.net and others that don't support Ed25519 yet
+[[ssh-keys]]
+vault = "Personal"
+item = "juivb4nx4uuftbhopukninhni4"
+account = "Andrei Jiroh Halili"
+# releases
+[[ssh-keys]]
+vault = "CI/CD Automation Toolkit"
+item = "hfkcoqzbpa3gjb2utvi5rpvc5y"
+account = "Andrei Jiroh Halili"
+
+# RecapTime.dev
+[[ssh-keys]]
+vault = "Employee"
+item = "wklfmur3fegpajjhrx4acwcscm"
+account = "https://recaptime-dev.1password.com"

@@ -1,0 +1,9 @@
+# Mainly used by p.psf.lt for profile metadata.
+fullname = "Andrei Jiroh Halili"
+#gemini = "gemini.andreijiroh.xyz"
+website = "https://andreijiroh.dev"
+description = "Building OSS at RecapTime.dev, also Autistic Filipino and Hack Clubber"
+email = "ajhalili2006@andreijiroh.dev"
+matrix = "@ajhalili2006:andreijiroh.dev"
+fediverse = "tilde.zone/@ajhalili2006"
+location = "Marilao, Bulacan, Philippines"
