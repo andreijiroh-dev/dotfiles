@@ -1,9 +1,8 @@
 # `@andreijiroh-dev/dotfiles@nixos` - @ajhalili2006's dotfiles under nixos + nixpkgs!
 
 Yup, I'm starting a fresh for my dotfiles for 2025 and beyond, now with
-[nixpkgs](https://nixos.org) and [home-manager](https://nix-community.github.io/home-manager).
-(Don't worry, I'll be maintaining the yadm-era setup for non-Nix setups seperately
-as seperate branches for prosperity.)
+[nixpkgs](https://nixos.org) and [home-manager](https://nix-community.github.io/home-manager)
+in mind. Backwards-compatible with non-nixpkgs setups via `yadm`.
 
 ## Usage
 
@@ -16,13 +15,14 @@ cd ~
 git init
 git remote add origin https://mau.dev/andreijiroh-dev/dotfiles
 git checkout -f main
+ln -s ./.git ./.local/share/yadm/repo.git # so that we can use yadm later
 ```
 
-If you prefer to cook up with yadm:
+If you prefer to cook up with `yadm` first:
 
 ```bash
 yadm clone https://github.com/andreijiroh-dev/dotfiles
-ln -s ./.local/share/yadm/TBD ./.git # so that we can normally use git here
+ln -s ./.local/share/yadm/repo.git ./.git # so that we can normally use git here
 ```
 
 ### Using nix flakes + home-manager
@@ -51,6 +51,8 @@ nix run home-manager/master -- switch --flake github:andreijiroh-dev/nixops-conf
 Note that this should work on most desktop apps, although if you're in Nest (and friends
 with RDP access), connect to there first and authenicate. You may need to adjust security
 settings in the desktop app to ensure nothing go wrong.
+
+Alternatively, you can export the private keys with password encryption
 
 ## Directory + File Map
 

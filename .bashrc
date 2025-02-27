@@ -5,6 +5,63 @@
 # portable at least.
 # SPDX-License-Identifier: MPL-2.0
 
+try_keychain_ssh_agent() {
+  if [[ $FF_KEYCHAIN == "1" ]]; then
+    echo "[ssh-agent-loader::keychain] attempting to use keychain for SSH agents"
+    eval "$(keychain --eval --agents ssh,gpg)"
+  fi
+}
+
+ssh-agent-loader() {
+  if [[ $1 == "" || $1 == "auto" ]]; then
+    if [[ $SSH_CONNECTION != "" ]] && [[ $VSCODE_IPC_HOOK_CLI != "" ]]; then
+      echo "[ssh-agent-loader] automatic detection disabled while you're in a VS Code Remote SSH session"
+      return
+    fi
+
+    export OLD_SSH_AUTH_SOCK="$SSH_AUTH_SOCK"
+
+    unset SSH_AGENT_PID SSH_AUTH_SOCK
+    if try_1password_ssh_agent; then
+      return
+    elif try_keychain_ssh_agent; then
+      return
+    else
+      echo "[ssh-agent-loader] SSH agent seems to be failed to load at the moment"
+      echo "[ssh-agent-loader] try again later by manually invoking the shell function"
+      return 1
+    fi
+  elif [[ $1 == "1passowrd" || $1 == "op" ]]; then
+    unset SSH_AGENT_PID SSH_AUTH_SOCK
+    try_1password_ssh_agent
+  elif [[ $1 == "keychain" ]]; then
+    try_keychain_ssh_agent
+  else
+    echo "ssh-agent-loader [auto|[1password|op|1p]|keychain]"
+    return 1
+  fi
+}
+
+# handle
+hm-vars-loader() {
+  if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+    source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+    HM_SESSION_VARS_PATH="$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+    HM_SESSION_VARS_LOADED=true
+  elif [ -f "$HOME/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh" ]; then
+    source "$HOME/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh"
+    HM_SESSION_VARS_PATH="$HOME/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh"
+    HM_SESSION_VARS_LOADED=true
+  elif [ -f "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh" ]; then
+    source "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
+    HM_SESSION_VARS_PATH="/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
+    HM_SESSION_VARS_LOADED=true
+  else
+    HM
+  fi
+  export HM_SESSION_VARS_LOADED HM_SESSION_VARS_PATH
+}
+
 ### from Debian and Ubuntu - START ###
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -54,24 +111,8 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -109,46 +150,10 @@ try_1password_ssh_agent() {
   unset OP_SSH_AUTH_SOCK
 }
 
-try_keychain_ssh_agent() {
-  if [[ $FF_KEYCHAIN == "1" ]]; then
-    echo "[ssh-agent-loader::keychain] attempting to use keychain for SSH agents"
-    eval "$(keychain --eval --agents ssh,gpg)"
-  fi
-}
-
-ssh-agent-loader() {
-  if [[ $1 == "" || $1 == "auto" ]]; then
-    unset SSH_AGENT_PID SSH_AUTH_SOCK
-    if try_1password_ssh_agent; then
-      return
-    elif try_keychain_ssh_agent; then
-      return
-    else
-      echo "[ssh-agent-loader] SSH agent seems to be failed to load at the moment"
-      echo "[ssh-agent-loader] try again later by manually invoking the shell function"
-      return 1
-    fi
-  elif [[ $1 == "1passowrd" || $1 == "op" ]]; then
-    unset SSH_AGENT_PID SSH_AUTH_SOCK
-    try_1password_ssh_agent
-  elif [[ $1 == "keychain" ]]; then
-    try_keychain_ssh_agent
-  else
-    echo "ssh-agent-loader [auto|[1password|op|1p]|keychain]"
-    return 1
-  fi
-}
-
-command -v direnv >> /dev/null && eval "$(direnv hook bash)"
-
 # Technically a hack in case we don't use home-manager switch
 if [ -L "$HOME/.nix-profile" ]  && [ -e "$HOME/.nix-profile" ]; then
   export PATH="$HOME/.nix-profile/bin:$HOME:$PATH"
-  if [ -f "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
-  source "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-  # Don't return yet, since we still do some stuff after that.
-  #return
-  fi
+  hm-vars-loader
 fi
 
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
@@ -168,3 +173,5 @@ else
   ssh-agent-loader auto
 fi
 export EDITOR GIT_EDITOR=$EDITOR
+
+command -v direnv >> /dev/null && eval "$(direnv hook bash)"
