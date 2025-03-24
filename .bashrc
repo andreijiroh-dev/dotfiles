@@ -175,3 +175,4 @@ fi
 export EDITOR GIT_EDITOR=$EDITOR
 
 command -v direnv >> /dev/null && eval "$(direnv hook bash)"
+source /home/gildedguy/.config/op/plugins.sh
