@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+_vscode_cli_path_detection=$(command -v code)
+VSCODE_CLI_PATH=${VSCODE_CLI_PATH:-$_vscode_cli_path_detection}
+PARAMS="$*"
+
+error() {
+    echo "error: $*"
+}
+
+if [[ "$VSCODE_CLI_PATH" == "" ]]; then
+  error VS Code CLI is not installed or is not on PATH yet, see
+  error https://code.visualstudio.com/docs/remote/tunnels for setup instructions
+  exit 1
+fi
+
+if [[ $PARAMS == "" ]]; then
+    echo "running code tunnel directly"
+    exec code tunnel
+fi
+
+echo "passing params to 'code tunnel': $PARAMS"
+exec code --verbose tunnel $PARAMS
