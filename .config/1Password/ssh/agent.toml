@@ -29,24 +29,34 @@
 #
 # More examples can be found here:
 #  https://developer.1password.com/docs/ssh/agent/config
+"$schema" = "https://developer.1password.com/schema/ssh-agent-config.json"
+
+## Personal ##
+# releases
+[[ssh-keys]]
+vault = "sah2xx3ps2rfhyi2svj5yzv2qu"
+item = "snnlyiqrvnfqycon7ackffb3ty"
+account = "https://andreijiroh-dev.1password.com"
 
 # main key since 2022
 [[ssh-keys]]
-vault = "Personal"
-item = "ztyawq2e2iajh2h76ls2rls7aq"
-account = "Andrei Jiroh Halili"
-# launchpad.net and others that don't support Ed25519 yet
-[[ssh-keys]]
-vault = "Personal"
-item = "juivb4nx4uuftbhopukninhni4"
-account = "Andrei Jiroh Halili"
-# releases
-[[ssh-keys]]
-vault = "CI/CD Automation Toolkit"
-item = "hfkcoqzbpa3gjb2utvi5rpvc5y"
-account = "Andrei Jiroh Halili"
+vault = "apwipwtqx6l4eqa27su7hlczey"
+item = "47mdejtly5eebvh74h3vvxr2ki"
+account = "https://andreijiroh-dev.1password.com"
 
-# RecapTime.dev
+# launchpad.net
+[[ssh-keys]]
+vault = "apwipwtqx6l4eqa27su7hlczey"
+item = "npdvnvxih5gsr3cxlonbkayoy4"
+account = "https://andreijiroh-dev.1password.com"
+
+[[ssh-keys]]
+vault = "fykuds2mmz7iletnsxkl47slbi"
+item = "ylcrbks3tkxtsgkc5gadm2dyqa"
+account = "https://andreijiroh-dev.1password.com"
+
+## RecapTime.dev ##
+# crew.recaptime.dev
 [[ssh-keys]]
 vault = "Employee"
 item = "wklfmur3fegpajjhrx4acwcscm"
