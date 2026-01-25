@@ -50,9 +50,14 @@ vault = "apwipwtqx6l4eqa27su7hlczey"
 item = "npdvnvxih5gsr3cxlonbkayoy4"
 account = "https://andreijiroh-dev.1password.com"
 
+# infraops
 [[ssh-keys]]
 vault = "fykuds2mmz7iletnsxkl47slbi"
 item = "ylcrbks3tkxtsgkc5gadm2dyqa"
+account = "https://andreijiroh-dev.1password.com"
+
+[[ssh-keys]]
+item = "gj75ey6dr7scrckvjp33dqz3xi"
 account = "https://andreijiroh-dev.1password.com"
 
 ## RecapTime.dev ##
