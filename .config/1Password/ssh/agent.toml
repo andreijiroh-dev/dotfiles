@@ -32,12 +32,6 @@
 "$schema" = "https://developer.1password.com/schema/ssh-agent-config.json"
 
 ## Personal ##
-# releases
-[[ssh-keys]]
-vault = "sah2xx3ps2rfhyi2svj5yzv2qu"
-item = "snnlyiqrvnfqycon7ackffb3ty"
-account = "https://andreijiroh-dev.1password.com"
-
 # main key since 2022
 [[ssh-keys]]
 vault = "apwipwtqx6l4eqa27su7hlczey"
@@ -50,23 +44,27 @@ vault = "apwipwtqx6l4eqa27su7hlczey"
 item = "npdvnvxih5gsr3cxlonbkayoy4"
 account = "https://andreijiroh-dev.1password.com"
 
-# passwordless stuff
+# releases
 [[ssh-keys]]
-item = "pntny4t3b7qdajtknrz3vgvrk4"
+vault = "sah2xx3ps2rfhyi2svj5yzv2qu"
+item = "snnlyiqrvnfqycon7ackffb3ty"
 account = "https://andreijiroh-dev.1password.com"
 
 # infraops
-[[ssh-keys]]
-vault = "fykuds2mmz7iletnsxkl47slbi"
-item = "ylcrbks3tkxtsgkc5gadm2dyqa"
-account = "https://andreijiroh-dev.1password.com"
+#[[ssh-keys]]
+#vault = "fykuds2mmz7iletnsxkl47slbi"
+#item = "ylcrbks3tkxtsgkc5gadm2dyqa"
+#account = "https://andreijiroh-dev.1password.com"
 
+# infraops - Google Cloud
 [[ssh-keys]]
-item = "gj75ey6dr7scrckvjp33dqz3xi"
+vault = "gpyh74knr5k3i56776ugd4xoeu"
+item = "l35ctqlgwyibwwo62ofmfr5udu"
 account = "https://andreijiroh-dev.1password.com"
 
 # StudentOps stuff
 [[ssh-keys]]
+vault = "fykuds2mmz7iletnsxkl47slbi"
 item = "ylcrbks3tkxtsgkc5gadm2dyqa"
 account = "https://andreijiroh-dev.1password.com"
 
@@ -75,4 +73,22 @@ account = "https://andreijiroh-dev.1password.com"
 [[ssh-keys]]
 vault = "Employee"
 item = "wklfmur3fegpajjhrx4acwcscm"
+account = "https://recaptime-dev.1password.com"
+
+# ~recaptimebot
+#[[ssh-keys]]
+#vault = "eoun75xm34adbswkq7lndfq25m"
+#item = "qiwfeejnmc7uo5w6cofshyr6yy"
+#account = "https://recaptime-dev.1password.com"
+
+# infraops
+[[ssh-keys]]
+vault = "eoun75xm34adbswkq7lndfq25m"
+item = "wdvulvamu2yeafat47wb3kf4sq"
+account = "https://recaptime-dev.1password.com"
+
+# releases kit
+[[ssh-keys]]
+vault = "eoun75xm34adbswkq7lndfq25m"
+item = "wo2yqeiw377m7qrqyul723oqle"
 account = "https://recaptime-dev.1password.com"
