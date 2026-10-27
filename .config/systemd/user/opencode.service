@@ -1,0 +1,28 @@
+[Unit]
+Description=OpenCode Background Service
+Documentation=https://opencode.ai/docs
+After=network.target
+
+[Service]
+Type=simple
+# --print-logs instructs OpenCode to write logs to stderr instead of file-only
+ExecStart=%h/.local/bin/opencode serve --service --print-logs
+# Reload configuration without dropping the process (systemctl --user reload opencode)
+ExecReload=%h/.local/bin/opencode reload
+# Graceful shutdown (systemctl --user stop opencode)
+ExecStop=%h/.local/bin/opencode service stop
+
+Restart=on-failure
+RestartSec=5s
+
+# Direct stdout and stderr to journald
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=opencode
+
+# Pass environment variables or load an env file for API keys if needed
+Environment="PATH=%h/.local/bin:/run/wrappers/bin:%h/.nix-profile/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
+EnvironmentFile=%h/.config/opencode/env
+
+[Install]
+WantedBy=default.target
